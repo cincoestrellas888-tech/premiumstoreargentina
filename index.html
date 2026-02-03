@@ -3,19 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <title>PremiumStore</title>
-
-  <!-- Optimizaciones rendimiento y móvil -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <meta name="format-detection" content="telephone=no">
   <meta name="referrer" content="strict-origin-when-cross-origin">
-
-  <!-- Preconexiones WhatsApp -->
   <link rel="preconnect" href="https://wa.me" crossorigin>
   <link rel="dns-prefetch" href="https://wa.me">
-
-  <!-- Preload fondo -->
   <link rel="preload" href="fondoweb.png" as="image">
-
   <style>
     * { margin:0; padding:0; box-sizing:border-box; }
     body {
@@ -43,7 +36,7 @@
       z-index: 100;
     }
     h1 { font-size: 2.8rem; letter-spacing: 2px; margin: 0; }
-    video {
+        video {
       width: 100%;
       max-width: 900px;
       display: block;
@@ -64,18 +57,12 @@
       font-size: 1.9rem;
       text-align: center;
       margin-bottom: 8px;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
     }
     h3 {
       font-size: 1.1rem;
       color: #ccc;
       text-align: center;
       margin-bottom: 30px;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
     }
     .gallery {
       display: grid;
@@ -97,7 +84,7 @@
     }
     .product img {
       width: 100%;
-      aspect-ratio: 0.707 / 1; /* A4 vertical aproximado */
+      aspect-ratio: 0.707 / 1;
       object-fit: contain;
       display: block;
     }
@@ -115,9 +102,7 @@
       animation: pulse 2.5s infinite;
     }
     @keyframes pulse { 0%,100% {opacity:1} 50% {opacity:0.75} }
-
-    /* MODAL */
-    .modal {
+        .modal {
       display: none;
       position: fixed;
       inset: 0;
@@ -209,17 +194,7 @@
       background: #f0f0f0;
       box-shadow: 0 0 20px rgba(255,255,255,0.5);
     }
-    footer {
-      background: #000;
-      padding: 40px 20px;
-      text-align: center;
-      margin-top: 100px;
-    }
-    footer a { color: #ccc; text-decoration: none; }
-    footer a:hover { color: white; }
-
-    /* MÓVIL */
-    @media (max-width: 768px) {
+        @media (max-width: 768px) {
       h1 { font-size: 2.2rem; }
       h2 { font-size: 1.7rem; margin-bottom: 6px; }
       h3 { font-size: 1rem; margin-bottom: 25px; }
@@ -232,7 +207,6 @@
       .price { font-size: 1.15rem; }
       .wa-btn { font-size: 1rem; padding: 10px; max-width: 300px; }
     }
-
     @media (max-width: 480px) {
       h2 { font-size: 1.5rem; }
       h3 { font-size: 0.95rem; }
@@ -246,19 +220,10 @@
   <header>
     <h1>PremiumStore</h1>
   </header>
-
-  <video 
-    autoplay 
-    loop 
-    muted 
-    playsinline 
-    preload="metadata"
-    poster="fondoweb.png"
-  >
+  <video autoplay loop muted playsinline preload="metadata" poster="fondoweb.png">
     <source src="videocincoweb.mp4" type="video/mp4">
     Tu navegador no soporta video.
   </video>
-
   <div class="intro">
     <p>“Mirá nuestro catálogo y seleccioná la prenda que más te guste”</p>
     <p>La mejor onda y calidad del mercado</p>
@@ -267,171 +232,166 @@
     <p>Estampas superpuestas</p>
     <p>"Podés modificar el tamaño y ubicación de la estampa o simplemente dejarla como está"</p>
     <p>Despacho dentro de las 24 a 48 hs hábiles</p>
-    </div>
-    <!-- REMERAS REGULAR FIT FEMENINAS -->
-  <section>
+  </div>
+    <section>
     <h2>REMERAS REGULAR FIT FEMENINAS</h2>
     <h3>todas las estampas son personalizables</h3>
     <div class="gallery">
-      <div class="product"><img src="portadaremeraregularfitblackalegria.png" data-sec="regular" data-idx="0" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="portadaremeraregularfitblackted.png" data-sec="regular" data-idx="1" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="portadaremeraregularfitwhitebear.png" data-sec="regular" data-idx="2" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="portadaremeraregularfitwhitegum.png" data-sec="regular" data-idx="3" loading="lazy" decoding="async" fetchpriority="low"></div>
+      <div class="product"><img src="portadaremeraregularfitblackalegria.png" data-sec="regular" data-idx="0" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="portadaremeraregularfitblackted.png" data-sec="regular" data-idx="1" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="portadaremeraregularfitwhitebear.png" data-sec="regular" data-idx="2" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="portadaremeraregularfitwhitegum.png" data-sec="regular" data-idx="3" loading="lazy" decoding="async"></div>
     </div>
     <button class="ver-mas">Ver más</button>
     <div class="gallery" style="display:none">
-      <div class="product"><img src="remeraregularfitblackcruz.png" data-sec="regular" data-idx="4" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="remeraregularfitblackemojis.png" data-sec="regular" data-idx="5" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="remeraregularfitblackgrafiti.png" data-sec="regular" data-idx="6" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="remeraregularfitblackmusk.png" data-sec="regular" data-idx="7" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="remeraregularfitblackoriginal.png" data-sec="regular" data-idx="8" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="remeraregularfitblackprimavera.png" data-sec="regular" data-idx="9" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="remeraregularfitblackskullpink.png" data-sec="regular" data-idx="10" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="remeraregularfitblackskullsurreal.png" data-sec="regular" data-idx="11" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="remeraregularfitwhitejesus.png" data-sec="regular" data-idx="12" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="remeraregularfitwhitemusk.png" data-sec="regular" data-idx="13" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="remeraregularfitwhiteoriginal.png" data-sec="regular" data-idx="14" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="remeraregularfitwhiteskullpink.png" data-sec="regular" data-idx="15" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="remeraregularfitwhiteskullsurreal.png" data-sec="regular" data-idx="16" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="remeraregularfitwhitesurreal.png" data-sec="regular" data-idx="17" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="remeraregularfitwhitesurrealist.png" data-sec="regular" data-idx="18" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="remeraregularfitwhiteted.png" data-sec="regular" data-idx="19" loading="lazy" decoding="async" fetchpriority="low"></div>
+      <div class="product"><img src="remeraregularfitblackcruz.png" data-sec="regular" data-idx="4" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="remeraregularfitblackemojis.png" data-sec="regular" data-idx="5" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="remeraregularfitblackgrafiti.png" data-sec="regular" data-idx="6" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="remeraregularfitblackmusk.png" data-sec="regular" data-idx="7" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="remeraregularfitblackoriginal.png" data-sec="regular" data-idx="8" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="remeraregularfitblackprimavera.png" data-sec="regular" data-idx="9" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="remeraregularfitblackskullpink.png" data-sec="regular" data-idx="10" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="remeraregularfitblackskullsurreal.png" data-sec="regular" data-idx="11" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="remeraregularfitwhitejesus.png" data-sec="regular" data-idx="12" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="remeraregularfitwhitemusk.png" data-sec="regular" data-idx="13" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="remeraregularfitwhiteoriginal.png" data-sec="regular" data-idx="14" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="remeraregularfitwhiteskullpink.png" data-sec="regular" data-idx="15" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="remeraregularfitwhiteskullsurreal.png" data-sec="regular" data-idx="16" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="remeraregularfitwhitesurreal.png" data-sec="regular" data-idx="17" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="remeraregularfitwhitesurrealist.png" data-sec="regular" data-idx="18" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="remeraregularfitwhiteted.png" data-sec="regular" data-idx="19" loading="lazy" decoding="async"></div>
     </div>
   </section>
-    <!-- REMERAS CLASICAS (UNISEX) -->
-  <section>
+    <section>
     <h2>REMERAS CLASICAS (UNISEX)</h2>
     <h3>todas las estampas son personalizables</h3>
     <div class="gallery">
-      <div class="product"><img src="portadaremeraclasicablackdiego.png" data-sec="clasicas" data-idx="0" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="portadaremeraclasicablackmusk.png" data-sec="clasicas" data-idx="1" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="portadaremeraclasicawhiteattitude.png" data-sec="clasicas" data-idx="2" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="portadaremeraclasicawhitebunny.png" data-sec="clasicas" data-idx="3" loading="lazy" decoding="async" fetchpriority="low"></div>
+      <div class="product"><img src="portadaremeraclasicablackdiego.png" data-sec="clasicas" data-idx="0" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="portadaremeraclasicablackmusk.png" data-sec="clasicas" data-idx="1" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="portadaremeraclasicawhiteattitude.png" data-sec="clasicas" data-idx="2" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="portadaremeraclasicawhitebunny.png" data-sec="clasicas" data-idx="3" loading="lazy" decoding="async"></div>
     </div>
     <button class="ver-mas">Ver más</button>
     <div class="gallery" style="display:none">
-      <div class="product"><img src="remeraclasicablackalegria.png" data-sec="clasicas" data-idx="4" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="remeraclasicablackcabra.png" data-sec="clasicas" data-idx="5" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="remeraclasicablackcruz.png" data-sec="clasicas" data-idx="6" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="remeraclasicablackdope.png" data-sec="clasicas" data-idx="7" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="remeraclasicablackfe.png" data-sec="clasicas" data-idx="8" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="remeraclasicablackjesus.png" data-sec="clasicas" data-idx="9" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="remeraclasicablackoriginal.png" data-sec="clasicas" data-idx="10" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="remeraclasicablackskullsurreal.png" data-sec="clasicas" data-idx="11" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="remeraclasicawhitearcangel.png" data-sec="clasicas" data-idx="12" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="remeraclasicawhitecruzfe.png" data-sec="clasicas" data-idx="13" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="remeraclasicawhitedope.png" data-sec="clasicas" data-idx="14" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="remeraclasicawhitefe.png" data-sec="clasicas" data-idx="15" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="remeraclasicawhitejesus.png" data-sec="clasicas" data-idx="16" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="remeraclasicawhitelion.png" data-sec="clasicas" data-idx="17" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="remeraclasicawhiteoriginal.png" data-sec="clasicas" data-idx="18" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="remeraclasicawhiteskullsurreal.png" data-sec="clasicas" data-idx="19" loading="lazy" decoding="async" fetchpriority="low"></div>
+      <div class="product"><img src="remeraclasicablackalegria.png" data-sec="clasicas" data-idx="4" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="remeraclasicablackcabra.png" data-sec="clasicas" data-idx="5" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="remeraclasicablackcruz.png" data-sec="clasicas" data-idx="6" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="remeraclasicablackdope.png" data-sec="clasicas" data-idx="7" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="remeraclasicablackfe.png" data-sec="clasicas" data-idx="8" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="remeraclasicablackjesus.png" data-sec="clasicas" data-idx="9" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="remeraclasicablackoriginal.png" data-sec="clasicas" data-idx="10" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="remeraclasicablackskullsurreal.png" data-sec="clasicas" data-idx="11" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="remeraclasicawhitearcangel.png" data-sec="clasicas" data-idx="12" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="remeraclasicawhitecruzfe.png" data-sec="clasicas" data-idx="13" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="remeraclasicawhitedope.png" data-sec="clasicas" data-idx="14" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="remeraclasicawhitefe.png" data-sec="clasicas" data-idx="15" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="remeraclasicawhitejesus.png" data-sec="clasicas" data-idx="16" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="remeraclasicawhitelion.png" data-sec="clasicas" data-idx="17" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="remeraclasicawhiteoriginal.png" data-sec="clasicas" data-idx="18" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="remeraclasicawhiteskullsurreal.png" data-sec="clasicas" data-idx="19" loading="lazy" decoding="async"></div>
     </div>
   </section>
-    <!-- REMERAS OVERSIZE (UNISEX) -->
-  <section>
+    <section>
     <h2>REMERAS OVERSIZE (UNISEX)</h2>
     <h3>todas las estampas son personalizables</h3>
     <div class="gallery">
-      <div class="product"><img src="portadaremeraunisexoversizeemojisoriginal.png" data-sec="oversize" data-idx="0" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="portadaremeraunisexoversizeoriginal.png" data-sec="oversize" data-idx="1" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="portadaremeraunisexoversizeoriginalemojis.png" data-sec="oversize" data-idx="2" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="portadaremeraunisexoversizeskullpinkbadboy.png" data-sec="oversize" data-idx="3" loading="lazy" decoding="async" fetchpriority="low"></div>
+      <div class="product"><img src="portadaremeraunisexoversizeemojisoriginal.png" data-sec="oversize" data-idx="0" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="portadaremeraunisexoversizeoriginal.png" data-sec="oversize" data-idx="1" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="portadaremeraunisexoversizeoriginalemojis.png" data-sec="oversize" data-idx="2" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="portadaremeraunisexoversizeskullpinkbadboy.png" data-sec="oversize" data-idx="3" loading="lazy" decoding="async"></div>
     </div>
     <button class="ver-mas">Ver más</button>
     <div class="gallery" style="display:none">
-      <div class="product"><img src="remeraunisexoversizeblackbadboy.png" data-sec="oversize" data-idx="4" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="remeraunisexoversizeblackcruz.png" data-sec="oversize" data-idx="5" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="remeraunisexoversizeblackcruzlarga.png" data-sec="oversize" data-idx="6" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="remeraunisexoversizeblackdiez.png" data-sec="oversize" data-idx="7" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="remeraunisexoversizeblackemojis.png" data-sec="oversize" data-idx="8" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="remeraunisexoversizeblackfe.png" data-sec="oversize" data-idx="9" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="remeraunisexoversizeblackgum.png" data-sec="oversize" data-idx="10" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="remeraunisexoversizeblackmessi.png" data-sec="oversize" data-idx="11" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="remeraunisexoversizeblackmusk.png" data-sec="oversize" data-idx="12" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="remeraunisexoversizeblacknolimit.png" data-sec="oversize" data-idx="13" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="remeraunisexoversizeblackorigin.png" data-sec="oversize" data-idx="14" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="remeraunisexoversizeblackosoted.png" data-sec="oversize" data-idx="15" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="remeraunisexoversizeblacksurreal.png" data-sec="oversize" data-idx="16" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="remeraunisexoversizeblackted.png" data-sec="oversize" data-idx="17" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="remeraunisexoversizewhiteabano.png" data-sec="oversize" data-idx="18" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="remeraunisexoversizewhitealegria.png" data-sec="oversize" data-idx="19" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="remeraunisexoversizewhitearcangel.png" data-sec="oversize" data-idx="20" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="remeraunisexoversizewhitearcoiris.png" data-sec="oversize" data-idx="21" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="remeraunisexoversizewhitecabra.png" data-sec="oversize" data-idx="22" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="remeraunisexoversizewhitediego.png" data-sec="oversize" data-idx="23" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="remeraunisexoversizewhiteemojis.png" data-sec="oversize" data-idx="24" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="remeraunisexoversizewhitejesus.png" data-sec="oversize" data-idx="25" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="remeraunisexoversizewhitelion.png" data-sec="oversize" data-idx="26" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="remeraunisexoversizewhitemickeypink.png" data-sec="oversize" data-idx="27" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="remeraunisexoversizewhiteoriginal.png" data-sec="oversize" data-idx="28" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="remeraunisexoversizewhiteprimavera.png" data-sec="oversize" data-idx="29" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="remeraunisexoversizewhiteskullpink.png" data-sec="oversize" data-idx="30" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="remeraunisexoversizewhiteted.png" data-sec="oversize" data-idx="31" loading="lazy" decoding="async" fetchpriority="low"></div>
+      <div class="product"><img src="remeraunisexoversizeblackbadboy.png" data-sec="oversize" data-idx="4" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="remeraunisexoversizeblackcruz.png" data-sec="oversize" data-idx="5" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="remeraunisexoversizeblackcruzlarga.png" data-sec="oversize" data-idx="6" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="remeraunisexoversizeblackdiez.png" data-sec="oversize" data-idx="7" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="remeraunisexoversizeblackemojis.png" data-sec="oversize" data-idx="8" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="remeraunisexoversizeblackfe.png" data-sec="oversize" data-idx="9" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="remeraunisexoversizeblackgum.png" data-sec="oversize" data-idx="10" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="remeraunisexoversizeblackmessi.png" data-sec="oversize" data-idx="11" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="remeraunisexoversizeblackmusk.png" data-sec="oversize" data-idx="12" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="remeraunisexoversizeblacknolimit.png" data-sec="oversize" data-idx="13" loading="lazy" decoding="async"></div>
+            <div class="product"><img src="remeraunisexoversizeblackorigin.png" data-sec="oversize" data-idx="14" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="remeraunisexoversizeblackosoted.png" data-sec="oversize" data-idx="15" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="remeraunisexoversizeblacksurreal.png" data-sec="oversize" data-idx="16" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="remeraunisexoversizeblackted.png" data-sec="oversize" data-idx="17" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="remeraunisexoversizewhiteabano.png" data-sec="oversize" data-idx="18" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="remeraunisexoversizewhitealegria.png" data-sec="oversize" data-idx="19" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="remeraunisexoversizewhitearcangel.png" data-sec="oversize" data-idx="20" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="remeraunisexoversizewhitearcoiris.png" data-sec="oversize" data-idx="21" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="remeraunisexoversizewhitecabra.png" data-sec="oversize" data-idx="22" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="remeraunisexoversizewhitediego.png" data-sec="oversize" data-idx="23" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="remeraunisexoversizewhiteemojis.png" data-sec="oversize" data-idx="24" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="remeraunisexoversizewhitejesus.png" data-sec="oversize" data-idx="25" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="remeraunisexoversizewhitelion.png" data-sec="oversize" data-idx="26" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="remeraunisexoversizewhitemickeypink.png" data-sec="oversize" data-idx="27" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="remeraunisexoversizewhiteoriginal.png" data-sec="oversize" data-idx="28" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="remeraunisexoversizewhiteprimavera.png" data-sec="oversize" data-idx="29" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="remeraunisexoversizewhiteskullpink.png" data-sec="oversize" data-idx="30" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="remeraunisexoversizewhiteted.png" data-sec="oversize" data-idx="31" loading="lazy" decoding="async"></div>
     </div>
   </section>
-      <!-- REMERAS OVERSIZE STONE WASH (UNISEX) -->
-  <section>
+    <section>
     <h2>REMERAS OVERSIZE STONE WASH (UNISEX)</h2>
     <h3>todas las estampas son personalizables</h3>
     <div class="gallery">
-      <div class="product"><img src="portadaremeraoversizestonewashblackbeargafas.png" data-sec="stone-wash" data-idx="0" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="portadaremeraoversizestonewashblackbearpink.png" data-sec="stone-wash" data-idx="1" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="portadaremeraoversizestonewashwhitechillbear.png" data-sec="stone-wash" data-idx="2" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="portadaremeraoversizestonewashwhitebearpink.png" data-sec="stone-wash" data-idx="3" loading="lazy" decoding="async" fetchpriority="low"></div>
+      <div class="product"><img src="portadaremeraoversizestonewashblackbeargafas.png" data-sec="stone-wash" data-idx="0" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="portadaremeraoversizestonewashblackbearpink.png" data-sec="stone-wash" data-idx="1" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="portadaremeraoversizestonewashwhitechillbear.png" data-sec="stone-wash" data-idx="2" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="portadaremeraoversizestonewashwhitebearpink.png" data-sec="stone-wash" data-idx="3" loading="lazy" decoding="async"></div>
     </div>
     <button class="ver-mas">Ver más</button>
     <div class="gallery" style="display:none">
-      <div class="product"><img src="remeraoversizestonewashblackbaka.png" data-sec="stone-wash" data-idx="4" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="remeraoversizestonewashblackcabra.png" data-sec="stone-wash" data-idx="5" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="remeraoversizestonewashblackgorilla.png" data-sec="stone-wash" data-idx="6" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="remeraoversizestonewashblackgorillafrente.png" data-sec="stone-wash" data-idx="7" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="remeraoversizestonewashblackoriginal.png" data-sec="stone-wash" data-idx="8" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="remeraoversizestonewashblackted.png" data-sec="stone-wash" data-idx="9" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="remeraoversizestonewashblacktedbaño.png" data-sec="stone-wash" data-idx="10" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="remeraoversizestonewashblacktedblond.png" data-sec="stone-wash" data-idx="11" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="remeraoversizestonewashblacktedduff.png" data-sec="stone-wash" data-idx="12" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="remeraoversizestonewashblacktedgafas.png" data-sec="stone-wash" data-idx="13" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="remeraoversizestonewashwhitebakaout.png" data-sec="stone-wash" data-idx="14" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="remeraoversizestonewashwhitebaño.png" data-sec="stone-wash" data-idx="15" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="remeraoversizestonewashwhitebunny.png" data-sec="stone-wash" data-idx="16" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="remeraoversizestonewashwhitecaritas.png" data-sec="stone-wash" data-idx="17" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="remeraoversizestonewashwhitechillout.png" data-sec="stone-wash" data-idx="18" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="remeraoversizestonewashwhitecouraje.png" data-sec="stone-wash" data-idx="19" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="remeraoversizestonewashwhitepanter.png" data-sec="stone-wash" data-idx="20" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="remeraoversizestonewashwhitepanterpinks.png" data-sec="stone-wash" data-idx="21" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="remeraoversizestonewashwhitepanteryellow.png" data-sec="stone-wash" data-idx="22" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="remeraoversizestonewashwhitepinkbear.png" data-sec="stone-wash" data-idx="23" loading="lazy" decoding="async" fetchpriority="low"></div>
+      <div class="product"><img src="remeraoversizestonewashblackbaka.png" data-sec="stone-wash" data-idx="4" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="remeraoversizestonewashblackcabra.png" data-sec="stone-wash" data-idx="5" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="remeraoversizestonewashblackgorilla.png" data-sec="stone-wash" data-idx="6" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="remeraoversizestonewashblackgorillafrente.png" data-sec="stone-wash" data-idx="7" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="remeraoversizestonewashblackoriginal.png" data-sec="stone-wash" data-idx="8" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="remeraoversizestonewashblackted.png" data-sec="stone-wash" data-idx="9" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="remeraoversizestonewashblacktedbaño.png" data-sec="stone-wash" data-idx="10" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="remeraoversizestonewashblacktedblond.png" data-sec="stone-wash" data-idx="11" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="remeraoversizestonewashblacktedduff.png" data-sec="stone-wash" data-idx="12" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="remeraoversizestonewashblacktedgafas.png" data-sec="stone-wash" data-idx="13" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="remeraoversizestonewashwhitebakaout.png" data-sec="stone-wash" data-idx="14" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="remeraoversizestonewashwhitebaño.png" data-sec="stone-wash" data-idx="15" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="remeraoversizestonewashwhitebunny.png" data-sec="stone-wash" data-idx="16" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="remeraoversizestonewashwhitecaritas.png" data-sec="stone-wash" data-idx="17" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="remeraoversizestonewashwhitechillout.png" data-sec="stone-wash" data-idx="18" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="remeraoversizestonewashwhitecouraje.png" data-sec="stone-wash" data-idx="19" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="remeraoversizestonewashwhitepanter.png" data-sec="stone-wash" data-idx="20" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="remeraoversizestonewashwhitepanterpinks.png" data-sec="stone-wash" data-idx="21" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="remeraoversizestonewashwhitepanteryellow.png" data-sec="stone-wash" data-idx="22" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="remeraoversizestonewashwhitepinkbear.png" data-sec="stone-wash" data-idx="23" loading="lazy" decoding="async"></div>
     </div>
   </section>
-  <!-- REMERAS CROP FEMENINAS -->
-  <section>
+    <section>
     <h2>REMERAS CROP FEMENINAS</h2>
     <h3>todas las estampas son personalizables</h3>
     <div class="gallery">
-      <div class="product"><img src="portadaremeracropbrownglow.png" data-sec="crop" data-idx="0" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="portadaremeracropgraybitch.png" data-sec="crop" data-idx="1" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="portadaremeracroplightmauveheart.png" data-sec="crop" data-idx="2" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="portadaremeracropmauveoriginal.png" data-sec="crop" data-idx="3" loading="lazy" decoding="async" fetchpriority="low"></div>
+      <div class="product"><img src="portadaremeracropbrownglow.png" data-sec="crop" data-idx="0" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="portadaremeracropgraybitch.png" data-sec="crop" data-idx="1" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="portadaremeracroplightmauveheart.png" data-sec="crop" data-idx="2" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="portadaremeracropmauveoriginal.png" data-sec="crop" data-idx="3" loading="lazy" decoding="async"></div>
     </div>
     <button class="ver-mas">Ver más</button>
     <div class="gallery" style="display:none">
-      <div class="product"><img src="remeracropbrownbitch.png" data-sec="crop" data-idx="4" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="remeracropbrowncherrylips.png" data-sec="crop" data-idx="5" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="remeracropbrownlovecat.png" data-sec="crop" data-idx="6" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="remeracropbrownoriginal.png" data-sec="crop" data-idx="7" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="remeracropgraymedusa.png" data-sec="crop" data-idx="8" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="remeracropgraymusic.png" data-sec="crop" data-idx="9" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="remeracropgrayonmusic.png" data-sec="crop" data-idx="10" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="remeracropgrayoriginal.png" data-sec="crop" data-idx="11" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="remeracroplightmauvecopa.png" data-sec="crop" data-idx="12" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="remeracroplightmauvenewyear.png" data-sec="crop" data-idx="13" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="remeracroplightmauveoriginal.png" data-sec="crop" data-idx="14" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="remeracroplightmauvetwoeyes.png" data-sec="crop" data-idx="15" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="remeracropmauvecrema.png" data-sec="crop" data-idx="16" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="remeracropmauvelips.png" data-sec="crop" data-idx="17" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="remeracropmauvelipsart.png" data-sec="crop" data-idx="18" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="remeracropmauvewatermelonlips.png" data-sec="crop" data-idx="19" loading="lazy" decoding="async" fetchpriority="low"></div>
+      <div class="product"><img src="remeracropbrownbitch.png" data-sec="crop" data-idx="4" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="remeracropbrowncherrylips.png" data-sec="crop" data-idx="5" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="remeracropbrownlovecat.png" data-sec="crop" data-idx="6" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="remeracropbrownoriginal.png" data-sec="crop" data-idx="7" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="remeracropgraymedusa.png" data-sec="crop" data-idx="8" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="remeracropgraymusic.png" data-sec="crop" data-idx="9" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="remeracropgrayonmusic.png" data-sec="crop" data-idx="10" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="remeracropgrayoriginal.png" data-sec="crop" data-idx="11" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="remeracroplightmauvecopa.png" data-sec="crop" data-idx="12" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="remeracroplightmauvenewyear.png" data-sec="crop" data-idx="13" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="remeracroplightmauveoriginal.png" data-sec="crop" data-idx="14" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="remeracroplightmauvetwoeyes.png" data-sec="crop" data-idx="15" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="remeracropmauvecrema.png" data-sec="crop" data-idx="16" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="remeracropmauvelips.png" data-sec="crop" data-idx="17" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="remeracropmauvelipsart.png" data-sec="crop" data-idx="18" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="remeracropmauvewatermelonlips.png" data-sec="crop" data-idx="19" loading="lazy" decoding="async"></div>
     </div>
   </section>
     <!-- REMERAS MUSCULOSA DE MORLEY FEMENINAS -->
@@ -439,73 +399,75 @@
     <h2>REMERAS MUSCULOSA DE MORLEY FEMENINAS</h2>
     <h3>todas las estampas son personalizables</h3>
     <div class="gallery">
-      <div class="product"><img src="portadamusculosademorleygraybitch.png" data-sec="morley" data-idx="0" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="portadamusculosademorleygrayheartpink.png" data-sec="morley" data-idx="1" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="portadamusculosademorleygrayoriginal.png" data-sec="morley" data-idx="2" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="portadamusculosademorleygraypink.png" data-sec="morley" data-idx="3" loading="lazy" decoding="async" fetchpriority="low"></div>
+      <div class="product"><img src="portadamusculosademorleygraybitch.png" data-sec="morley" data-idx="0" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="portadamusculosademorleygrayheartpink.png" data-sec="morley" data-idx="1" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="portadamusculosademorleygrayoriginal.png" data-sec="morley" data-idx="2" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="portadamusculosademorleygraypink.png" data-sec="morley" data-idx="3" loading="lazy" decoding="async"></div>
     </div>
     <button class="ver-mas">Ver más</button>
     <div class="gallery" style="display:none">
-      <div class="product"><img src="musculosademorleygraybearpink.png" data-sec="morley" data-idx="4" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="musculosademorleygraychill.png" data-sec="morley" data-idx="5" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="musculosademorleygrayglow.png" data-sec="morley" data-idx="6" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="musculosademorleygraymickeypink.png" data-sec="morley" data-idx="7" loading="lazy" decoding="async" fetchpriority="low"></div>
+      <div class="product"><img src="musculosademorleygraybearpink.png" data-sec="morley" data-idx="4" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="musculosademorleygraychill.png" data-sec="morley" data-idx="5" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="musculosademorleygrayglow.png" data-sec="morley" data-idx="6" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="musculosademorleygraymickeypink.png" data-sec="morley" data-idx="7" loading="lazy" decoding="async"></div>
     </div>
   </section>
-    <!-- BUZOS HODIE UNISEX -->
+
+  <!-- BUZOS HODIE UNISEX -->
   <section>
     <h2>BUZOS HODIE UNISEX</h2>
     <h3>todas las estampas son personalizables</h3>
     <div class="gallery">
-      <div class="product"><img src="portadabuzohoddiestonewashunisexattitude.png" data-sec="hodie" data-idx="0" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="portadabuzohoddiewhiteunisexnolimit.png" data-sec="hodie" data-idx="1" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="portadabuzohoddiestonewashunisexoriginal.png" data-sec="hodie" data-idx="2" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="portadabuzohoddiewhiteunisexpanterpink.png" data-sec="hodie" data-idx="3" loading="lazy" decoding="async" fetchpriority="low"></div>
+      <div class="product"><img src="portadabuzohoddiestonewashunisexattitude.png" data-sec="hodie" data-idx="0" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="portadabuzohoddiewhiteunisexnolimit.png" data-sec="hodie" data-idx="1" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="portadabuzohoddiestonewashunisexoriginal.png" data-sec="hodie" data-idx="2" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="portadabuzohoddiewhiteunisexpanterpink.png" data-sec="hodie" data-idx="3" loading="lazy" decoding="async"></div>
     </div>
     <button class="ver-mas">Ver más</button>
     <div class="gallery" style="display:none">
-      <div class="product"><img src="buzohoddieblackunisexbadboy.png" data-sec="hodie" data-idx="4" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="buzohoddieblackunisexbearpink.png" data-sec="hodie" data-idx="5" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="buzohoddieblackunisexbearpinkmini.png" data-sec="hodie" data-idx="6" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="buzohoddieblackunisexemojis.png" data-sec="hodie" data-idx="7" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="buzohoddieblackunisexnolimit.png" data-sec="hodie" data-idx="8" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="buzohoddieblackunisexonmusic.png" data-sec="hodie" data-idx="9" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="buzohoddieblackunisexoriginal.png" data-sec="hodie" data-idx="10" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="buzohoddieblackunisexpanter.png" data-sec="hodie" data-idx="11" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="buzohoddieblackunisexprimavera.png" data-sec="hodie" data-idx="12" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="buzohoddiestonewashunisexbaka.png" data-sec="hodie" data-idx="13" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="buzohoddiestonewashunisexglow.png" data-sec="hodie" data-idx="14" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="buzohoddiestonewashunisexmusk.png" data-sec="hodie" data-idx="15" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="buzohoddiestonewashunisexskullpink.png" data-sec="hodie" data-idx="16" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="buzohoddiestonewashunisexsurreal.png" data-sec="hodie" data-idx="17" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="buzohoddiewhiteunisexbaka.png" data-sec="hodie" data-idx="18" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="buzohoddiewhiteunisexbearpink.png" data-sec="hodie" data-idx="19" loading="lazy" decoding="async" fetchpriority="low"></div>
+      <div class="product"><img src="buzohoddieblackunisexbadboy.png" data-sec="hodie" data-idx="4" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="buzohoddieblackunisexbearpink.png" data-sec="hodie" data-idx="5" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="buzohoddieblackunisexbearpinkmini.png" data-sec="hodie" data-idx="6" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="buzohoddieblackunisexemojis.png" data-sec="hodie" data-idx="7" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="buzohoddieblackunisexnolimit.png" data-sec="hodie" data-idx="8" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="buzohoddieblackunisexonmusic.png" data-sec="hodie" data-idx="9" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="buzohoddieblackunisexoriginal.png" data-sec="hodie" data-idx="10" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="buzohoddieblackunisexpanter.png" data-sec="hodie" data-idx="11" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="buzohoddieblackunisexprimavera.png" data-sec="hodie" data-idx="12" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="buzohoddiestonewashunisexbaka.png" data-sec="hodie" data-idx="13" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="buzohoddiestonewashunisexglow.png" data-sec="hodie" data-idx="14" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="buzohoddiestonewashunisexmusk.png" data-sec="hodie" data-idx="15" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="buzohoddiestonewashunisexskullpink.png" data-sec="hodie" data-idx="16" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="buzohoddiestonewashunisexsurreal.png" data-sec="hodie" data-idx="17" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="buzohoddiewhiteunisexbaka.png" data-sec="hodie" data-idx="18" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="buzohoddiewhiteunisexbearpink.png" data-sec="hodie" data-idx="19" loading="lazy" decoding="async"></div>
     </div>
   </section>
-    <!-- BUZOS CUELLO REDONDO -->
+
+  <!-- BUZOS CUELLO REDONDO -->
   <section>
     <h2>BUZOS CUELLO REDONDO</h2>
     <h3>todas las estampas son personalizables</h3>
     <div class="gallery">
-      <div class="product"><img src="portadabuzocuelloredondostonewashoversizebearpink.png" data-sec="cuello-redondo" data-idx="0" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="portadabuzocuelloredondowhiteoversizebearpink.png" data-sec="cuello-redondo" data-idx="1" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="portadabuzocuelloredondostonewashoversizemanoriginal.png" data-sec="cuello-redondo" data-idx="2" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="portadabuzocuelloredondowhiteoversizechill.png" data-sec="cuello-redondo" data-idx="3" loading="lazy" decoding="async" fetchpriority="low"></div>
+      <div class="product"><img src="portadabuzocuelloredondostonewashoversizebearpink.png" data-sec="cuello-redondo" data-idx="0" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="portadabuzocuelloredondowhiteoversizebearpink.png" data-sec="cuello-redondo" data-idx="1" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="portadabuzocuelloredondostonewashoversizemanoriginal.png" data-sec="cuello-redondo" data-idx="2" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="portadabuzocuelloredondowhiteoversizechill.png" data-sec="cuello-redondo" data-idx="3" loading="lazy" decoding="async"></div>
     </div>
     <button class="ver-mas">Ver más</button>
     <div class="gallery" style="display:none">
-      <div class="product"><img src="buzocuelloredondoblackoversizebaka.png" data-sec="cuello-redondo" data-idx="4" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="buzocuelloredondoblackoversizebearganster.png" data-sec="cuello-redondo" data-idx="5" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="buzocuelloredondoblackoversizegum.png" data-sec="cuello-redondo" data-idx="6" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="buzocuelloredondoblackoversizeonmusic.png" data-sec="cuello-redondo" data-idx="7" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="buzocuelloredondostonewashoversizeattitudeoscuro.png" data-sec="cuello-redondo" data-idx="8" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="buzocuelloredondostonewashoversizeattitudewhit.png" data-sec="cuello-redondo" data-idx="9" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="buzocuelloredondostonewashoversizebearpinkback.png" data-sec="cuello-redondo" data-idx="10" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="buzocuelloredondostonewashoversizelion.png" data-sec="cuello-redondo" data-idx="11" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="buzocuelloredondostonewashoversizeonmusic.png" data-sec="cuello-redondo" data-idx="12" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="buzocuelloredondostonewashoversizeoriginal.png" data-sec="cuello-redondo" data-idx="13" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="buzocuelloredondowhiteoversizeskullpink.png" data-sec="cuello-redondo" data-idx="14" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="buzocuelloredondowhiteoversizeskullpinkback.png" data-sec="cuello-redondo" data-idx="15" loading="lazy" decoding="async" fetchpriority="low"></div>
+      <div class="product"><img src="buzocuelloredondoblackoversizebaka.png" data-sec="cuello-redondo" data-idx="4" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="buzocuelloredondoblackoversizebearganster.png" data-sec="cuello-redondo" data-idx="5" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="buzocuelloredondoblackoversizegum.png" data-sec="cuello-redondo" data-idx="6" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="buzocuelloredondoblackoversizeonmusic.png" data-sec="cuello-redondo" data-idx="7" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="buzocuelloredondostonewashoversizeattitudeoscuro.png" data-sec="cuello-redondo" data-idx="8" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="buzocuelloredondostonewashoversizeattitudewhit.png" data-sec="cuello-redondo" data-idx="9" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="buzocuelloredondostonewashoversizebearpinkback.png" data-sec="cuello-redondo" data-idx="10" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="buzocuelloredondostonewashoversizelion.png" data-sec="cuello-redondo" data-idx="11" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="buzocuelloredondostonewashoversizeonmusic.png" data-sec="cuello-redondo" data-idx="12" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="buzocuelloredondostonewashoversizeoriginal.png" data-sec="cuello-redondo" data-idx="13" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="buzocuelloredondowhiteoversizeskullpink.png" data-sec="cuello-redondo" data-idx="14" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="buzocuelloredondowhiteoversizeskullpinkback.png" data-sec="cuello-redondo" data-idx="15" loading="lazy" decoding="async"></div>
     </div>
   </section>
     <!-- REMERAS INFANTILES UNISEX -->
@@ -513,30 +475,29 @@
     <h2>REMERAS INFANTILES UNISEX</h2>
     <h3>todas las estampas son personalizables</h3>
     <div class="gallery">
-      <div class="product"><img src="remeraamarillaunisexbackattitude.png" data-sec="infantiles" data-idx="0" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="remeracelesteunisexstich.png" data-sec="infantiles" data-idx="1" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="remerarosaunisexpink.png" data-sec="infantiles" data-idx="2" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="remeragrisunisexoriginal.png" data-sec="infantiles" data-idx="3" loading="lazy" decoding="async" fetchpriority="low"></div>
+      <div class="product"><img src="remeraamarillaunisexbackattitude.png" data-sec="infantiles" data-idx="0" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="remeracelesteunisexstich.png" data-sec="infantiles" data-idx="1" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="remerarosaunisexpink.png" data-sec="infantiles" data-idx="2" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="remeragrisunisexoriginal.png" data-sec="infantiles" data-idx="3" loading="lazy" decoding="async"></div>
     </div>
     <button class="ver-mas">Ver más</button>
     <div class="gallery" style="display:none">
-      <div class="product"><img src="remeraamarillaunisexattitude.png" data-sec="infantiles" data-idx="4" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="remeraamarillaunisexcoraje.png" data-sec="infantiles" data-idx="5" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="remeraamarillaunisexoriginal.png" data-sec="infantiles" data-idx="6" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="remeracelesteunisexdiez.png" data-sec="infantiles" data-idx="7" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="remeracelesteunisexmusic.png" data-sec="infantiles" data-idx="8" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="remeracelesteunisexoriginal.png" data-sec="infantiles" data-idx="9" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="remeragrisunisexalegria.png" data-sec="infantiles" data-idx="10" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="remeragrisunisexcoraje.png" data-sec="infantiles" data-idx="11" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="remeragrisunisexcowardlydog.png" data-sec="infantiles" data-idx="12" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="remerarosaunisexalegria.png" data-sec="infantiles" data-idx="13" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="remerarosaunisexoriginal.png" data-sec="infantiles" data-idx="14" loading="lazy" decoding="async" fetchpriority="low"></div>
-      <div class="product"><img src="remerarosaunisexpatricio.png" data-sec="infantiles" data-idx="15" loading="lazy" decoding="async" fetchpriority="low"></div>
+      <div class="product"><img src="remeraamarillaunisexattitude.png" data-sec="infantiles" data-idx="4" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="remeraamarillaunisexcoraje.png" data-sec="infantiles" data-idx="5" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="remeraamarillaunisexoriginal.png" data-sec="infantiles" data-idx="6" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="remeracelesteunisexdiez.png" data-sec="infantiles" data-idx="7" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="remeracelesteunisexmusic.png" data-sec="infantiles" data-idx="8" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="remeracelesteunisexoriginal.png" data-sec="infantiles" data-idx="9" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="remeragrisunisexalegria.png" data-sec="infantiles" data-idx="10" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="remeragrisunisexcoraje.png" data-sec="infantiles" data-idx="11" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="remeragrisunisexcowardlydog.png" data-sec="infantiles" data-idx="12" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="remerarosaunisexalegria.png" data-sec="infantiles" data-idx="13" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="remerarosaunisexoriginal.png" data-sec="infantiles" data-idx="14" loading="lazy" decoding="async"></div>
+      <div class="product"><img src="remerarosaunisexpatricio.png" data-sec="infantiles" data-idx="15" loading="lazy" decoding="async"></div>
     </div>
   </section>
-</div> <!-- fin container -->
-
-<!-- MODAL -->
+</div> <!-- fin .container -->
+  <!-- MODAL -->
 <div id="modal" class="modal">
   <div class="modal-content">
     <span class="close">×</span>
@@ -553,15 +514,14 @@
 <footer>
   <p>Política de devolución: <a href="https://politicas-tienda-premium.pages.dev/" target="_blank">CLICK ACÁ</a></p>
   <p>Contacto: <a href="https://wa.me/5491176277337?text=Hola%20tengo%20una%20consulta%20para%20hacer" target="_blank">(11) 7627-7337</a></p>
-  <p class="small">premiumstore todos los derechos reservados © 2025</p>
+  <p>premiumstore todos los derechos reservados © 2025</p>
 </footer>
-
 <script>
 // Variables globales
 let currentSection = '';
 let currentIndex = 0;
 
-// Todos los productos
+// TODOS los productos (completos como los pasaste)
 const products = {
   regular: [
     {img:"portadaremeraregularfitblackalegria.png",name:"Regular fit Black Alegria",talles:"S - M - L - XL - XXL",link:"https://wa.me/p/26239062775698664/5491176277337",struck:28190,offer:27170},
@@ -641,7 +601,7 @@ const products = {
     {img:"remeraunisexoversizewhiteskullpink.png",name:"Oversize White Skull Pink",talles:"XXS - XS - S - M - L - XL - XXL",link:"https://wa.me/p/25968163682819570/5491176277337",struck:27790,offer:26570},
     {img:"remeraunisexoversizewhiteted.png",name:"Oversize White Ted",talles:"XXS - XS - S - M - L - XL - XXL",link:"https://wa.me/p/25593770616911500/5491176277337",struck:27790,offer:26570}
   ],
-    "stone-wash": [
+  "stone-wash": [
     {img:"portadaremeraoversizestonewashblackbeargafas.png",name:"Oversize StoneWash Bear Gafas",talles:"XXS - XS - S - M - L - XL - XXL",link:"https://wa.me/p/25364170976616178/5491176277337",struck:29890,offer:28270},
     {img:"portadaremeraoversizestonewashblackbearpink.png",name:"Oversize StoneWash Bear Pink",talles:"XXS - XS - S - M - L - XL - XXL",link:"https://wa.me/p/26217164524542179/5491176277337",struck:29890,offer:28270},
     {img:"portadaremeraoversizestonewashwhitechillbear.png",name:"Oversize StoneWash Chill Bear",talles:"XXS - XS - S - M - L - XL - XXL",link:"https://wa.me/p/26214349734839638/5491176277337",struck:29890,offer:28270},
@@ -758,104 +718,21 @@ const products = {
     {img:"remerarosaunisexpatricio.png",name:"Remera Rosa Unisex Patricio",talles:"4 - 6 - 8 - 10 - 12 - 14",link:"https://wa.me/p/25739063545779581/5491176277337",struck:25290,offer:24170}
   ]
 };
-
-// =============================================
-// EVENTOS Y FUNCIONES DEL CARRUSEL Y MODAL
-// =============================================
-
-// Delegación de eventos (funciona incluso con lazy loading)
-document.addEventListener('click', function(e) {
-  // Botón "Ver más"
-  if (e.target.classList.contains('ver-mas')) {
-    e.target.style.display = 'none';
-    e.target.nextElementSibling.style.display = 'grid';
-    return;
-  }
-
-  // Clic en cualquier imagen del catálogo → abre el modal con carrusel
-  if (e.target.tagName === 'IMG' && e.target.dataset.sec && e.target.dataset.idx) {
-    currentSection = e.target.dataset.sec;
-    currentIndex = parseInt(e.target.dataset.idx);
-    openModal();
-    return;
-  }
-
-  // Flechas del modal
-  if (e.target.classList.contains('prev')) {
-    change(-1);
-    return;
-  }
-  if (e.target.classList.contains('next')) {
-    change(1);
-    return;
-  }
-
-  // Cerrar modal
-  if (e.target.id === 'modal' || e.target.classList.contains('close')) {
-    document.getElementById('modal').style.display = 'none';
-  }
-});
-
-function openModal() {
-  const prod = products[currentSection]?.[currentIndex];
-  if (!prod) {
-    console.error("Producto no encontrado:", currentSection, currentIndex);
-    return;
-  }
-
-  const imgElement = document.getElementById('modalImg');
-  imgElement.src = prod.img;
-  imgElement.style.transform = 'scale(1)'; // evita zoom acumulado
-
-  document.getElementById('price').innerHTML = `
-    <span class="struck">$${prod.struck.toLocaleString('es-AR')}</span>
-    <span class="offer">$${prod.offer.toLocaleString('es-AR')}</span><br>
-    ${prod.name}<br>
-    ${prod.talles}
-  `;
-
-  document.getElementById('wa').href = prod.link;
-
-  document.getElementById('modal').style.display = 'flex';
-}
-
-function change(dir) {
-  const arr = products[currentSection];
-  if (!arr || arr.length === 0) return;
-
-  currentIndex = (currentIndex + dir + arr.length) % arr.length;
-  openModal();
-}
-
-console.log("Script completo cargado - clics y carrusel habilitados");
-</script>
-</body>
-</html>
-
-// Delegación de eventos
+  // Delegación de eventos
 document.addEventListener('click', function(e) {
   if (e.target.classList.contains('ver-mas')) {
     e.target.style.display = 'none';
     e.target.nextElementSibling.style.display = 'grid';
     return;
   }
-
   if (e.target.tagName === 'IMG' && e.target.dataset.sec) {
     currentSection = e.target.dataset.sec;
     currentIndex = parseInt(e.target.dataset.idx) || 0;
     openModal();
     return;
   }
-
-  if (e.target.classList.contains('prev')) {
-    change(-1);
-    return;
-  }
-  if (e.target.classList.contains('next')) {
-    change(1);
-    return;
-  }
-
+  if (e.target.classList.contains('prev')) { change(-1); return; }
+  if (e.target.classList.contains('next')) { change(1); return; }
   if (e.target.id === 'modal' || e.target.classList.contains('close')) {
     document.getElementById('modal').style.display = 'none';
   }
@@ -867,10 +744,9 @@ function openModal() {
     console.error("Producto no encontrado:", currentSection, currentIndex);
     return;
   }
-
-  document.getElementById('modalImg').src = prod.img;
-  document.getElementById('modalImg').style.transform = 'scale(1)'; // evita zoom acumulado
-
+  const imgEl = document.getElementById('modalImg');
+  imgEl.src = prod.img;
+  imgEl.style.transform = 'scale(1)'; // evita zoom acumulado
   document.getElementById('price').innerHTML = `
     <span class="struck">$${prod.struck.toLocaleString('es-AR')}</span>
     <span class="offer">$${prod.offer.toLocaleString('es-AR')}</span><br>
@@ -888,11 +764,7 @@ function change(dir) {
   openModal();
 }
 
-console.log("Todo listo - eventos delegados");
+console.log("PremiumStore - Todo listo y funcionando ✓");
 </script>
 </body>
 </html>
-
-
-
-
