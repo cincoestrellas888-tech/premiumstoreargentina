@@ -564,10 +564,6 @@ let currentIndex = 0;
 
 // Todos los productos
 const products = {
-  // Aquí van todos tus arrays anteriores (regular, clasicas, oversize, etc.)
-  // ... (pégalos tal cual tenías antes)
-
-const products = {
   regular: [
     {img:"portadaremeraregularfitblackalegria.png",name:"Regular fit Black Alegria",talles:"S - M - L - XL - XXL",link:"https://wa.me/p/26239062775698664/5491176277337",struck:28190,offer:27170},
     {img:"portadaremeraregularfitblackted.png",name:"Regular fit Black Ted",talles:"S - M - L - XL - XXL",link:"https://wa.me/p/26220907274180926/5491176277337",struck:28190,offer:27170},
@@ -646,7 +642,7 @@ const products = {
     {img:"remeraunisexoversizewhiteskullpink.png",name:"Oversize White Skull Pink",talles:"XXS - XS - S - M - L - XL - XXL",link:"https://wa.me/p/25968163682819570/5491176277337",struck:27790,offer:26570},
     {img:"remeraunisexoversizewhiteted.png",name:"Oversize White Ted",talles:"XXS - XS - S - M - L - XL - XXL",link:"https://wa.me/p/25593770616911500/5491176277337",struck:27790,offer:26570}
   ],
-  "stone-wash": [
+    "stone-wash": [
     {img:"portadaremeraoversizestonewashblackbeargafas.png",name:"Oversize StoneWash Bear Gafas",talles:"XXS - XS - S - M - L - XL - XXL",link:"https://wa.me/p/25364170976616178/5491176277337",struck:29890,offer:28270},
     {img:"portadaremeraoversizestonewashblackbearpink.png",name:"Oversize StoneWash Bear Pink",talles:"XXS - XS - S - M - L - XL - XXL",link:"https://wa.me/p/26217164524542179/5491176277337",struck:29890,offer:28270},
     {img:"portadaremeraoversizestonewashwhitechillbear.png",name:"Oversize StoneWash Chill Bear",talles:"XXS - XS - S - M - L - XL - XXL",link:"https://wa.me/p/26214349734839638/5491176277337",struck:29890,offer:28270},
@@ -672,28 +668,6 @@ const products = {
     {img:"remeraoversizestonewashwhitepanteryellow.png",name:"Oversize White Panter Yellow",talles:"XXS - XS - S - M - L - XL - XXL",link:"https://wa.me/p/33492410290374005/5491176277337",struck:27190,offer:26570},
     {img:"remeraoversizestonewashwhitepinkbear.png",name:"Oversize White Pink Bear",talles:"XXS - XS - S - M - L - XL - XXL",link:"https://wa.me/p/26217164524542179/5491176277337",struck:27190,offer:26570}
   ],
-  crop: [
-    {img:"portadaremeracropbrownglow.png",name:"Crop Brown Glow",talles:"S - M - L - XL - XXL",link:"https://wa.me/p/33720006224280448/5491176277337",struck:25490,offer:24270},
-    {img:"portadaremeracropgraybitch.png",name:"Crop Gray Bitch",talles:"S - M - L - XL - XXL",link:"https://wa.me/p/26733859616204038/5491176277337",struck:25390,offer:24170},
-    {img:"portadaremeracroplightmauveheart.png",name:"Crop Light Mauve Heart",talles:"S - M - L - XL - XXL",link:"https://wa.me/p/34660546396878020/5491176277337",struck:25490,offer:24270},
-    {img:"portadaremeracropmauveoriginal.png",name:"Crop Mauve Original",talles:"S - M - L - XL - XXL",link:"https://wa.me/p/33769817722663923/5491176277337",struck:25490,offer:24270},
-    {img:"remeracropbrownbitch.png",name:"Crop Brown Bitch",talles:"S - M - L - XL - XXL",link:"https://wa.me/p/26178650935059944/5491176277337",struck:25490,offer:24270},
-    {img:"remeracropbrowncherrylips.png",name:"Crop Brown Cherry Lips",talles:"S - M - L - XL - XXL",link:"https://wa.me/p/25642133232112294/5491176277337",struck:25490,offer:24270},
-    {img:"remeracropbrownlovecat.png",name:"Crop Brown LoveCat",talles:"S - M - L - XL - XXL",link:"https://wa.me/p/25544800638464476/5491176277337",struck:25490,offer:24270},
-    {img:"remeracropbrownoriginal.png",name:"Crop Brown Original",talles:"S - M - L - XL - XXL",link:"https://wa.me/p/25554010930936930/5491176277337",struck:25490,offer:24270},
-    {img:"remeracropgraymedusa.png",name:"Crop Gray Medusa",talles:"S - M - L - XL - XXL",link:"https://wa.me/p/33656479770664094/5491176277337",struck:25390,offer:24170},
-    {img:"remeracropgraymusic.png",name:"Crop Gray Music",talles:"S - M - L - XL - XXL",link:"https://wa.me/p/26373588612226603/5491176277337",struck:25390,offer:24170},
-    {img:"remeracropgrayonmusic.png",name:"Crop Gray OnMusic",talles:"S - M - L - XL - XXL",link:"https://wa.me/p/33568086969472530/5491176277337",struck:25390,offer:24170},
-    {img:"remeracropgrayoriginal.png",name:"Crop Gray Original",talles:"S - M - L - XL - XXL",link:"https://wa.me/p/27506772325614909/5491176277337",struck:25390,offer:24170},
-    {img:"remeracroplightmauvecopa.png",name:"Crop Light Mauve Copa",talles:"S - M - L - XL - XXL",link:"https://wa.me/p/25905483385729711/5491176277337",struck:25490,offer:24270},
-    {img:"remeracroplightmauvenewyear.png",name:"Crop Light Mauve New Year",talles:"S - M - L - XL - XXL",link:"https://wa.me/p/25826203403679930/5491176277337",struck:25490,offer:24270},
-    {img:"remeracroplightmauveoriginal.png",name:"Crop Light Mauve Original",talles:"S - M - L - XL - XXL",link:"https://wa.me/p/33920463167567501/5491176277337",struck:25490,offer:24270},
-    {img:"remeracroplightmauvetwoeyes.png",name:"Crop Light Mauve Two Eyes",talles:"S - M - L - XL - XXL",link:"https://wa.me/p/25915893988027794/5491176277337",struck:25490,offer:24270},
-    {img:"remeracropmauvecrema.png",name:"Crop Mauve Crema",talles:"S - M - L - XL - XXL",link:"https://wa.me/p/25474840395552261/5491176277337",struck:25490,offer:24270},
-    {img:"remeracropmauvelips.png",name:"Crop Mauve Lips",talles:"S - M - L - XL - XXL",link:"https://wa.me/p/25637880105822648/5491176277337",struck:25490,offer:24270},
-    {img:"remeracropmauvelipsart.png",name:"Crop Mauve Lips Art",talles:"S - M - L - XL - XXL",link:"https://wa.me/p/33366418513006286/5491176277337",struck:25490,offer:24270},
-    {img:"remeracropmauvewatermelonlips.png",name:"Crop Mauve Water Melon Lips",talles:"S - M - L - XL - XXL",link:"https://wa.me/p/34864023363196838/5491176277337",struck:25490,offer:24270}
-  ],
   morley: [
     {img:"portadamusculosademorleygraybitch.png",name:"Morley Gray Bitch",talles:"S - M - L - XL - XXL",link:"https://wa.me/p/26142934048646687/5491176277337",struck:24190,offer:23270},
     {img:"portadamusculosademorleygrayheartpink.png",name:"Morley Gray Heart Pink",talles:"S - M - L - XL - XXL",link:"https://wa.me/p/26283899871196248/5491176277337",struck:24190,offer:23270},
@@ -704,7 +678,7 @@ const products = {
     {img:"musculosademorleygrayglow.png",name:"Morley Gray Glow",talles:"S - M - L - XL - XXL",link:"https://wa.me/p/25291222797227304/5491176277337",struck:24190,offer:23270},
     {img:"musculosademorleygraymickeypink.png",name:"Morley Gray Mickey Pink",talles:"S - M - L - XL - XXL",link:"https://wa.me/p/25924988427131109/5491176277337",struck:24190,offer:23270}
   ],
-    hodie: [
+  hodie: [
     {img:"portadabuzohoddiestonewashunisexattitude.png",name:"Hoddie StoneWash Attitude",talles:"XS - S - M - L - XL - XXL",link:"https://wa.me/p/26286356050956139/5491176277337",struck:40890,offer:37840},
     {img:"portadabuzohoddiewhiteunisexnolimit.png",name:"Hoddie White NoLimit",talles:"XS - S - M - L - XL - XXL",link:"https://wa.me/p/25836823476005989/5491176277337",struck:37890,offer:34470},
     {img:"portadabuzohoddiestonewashunisexoriginal.png",name:"Hoddie StoneWash Original",talles:"XS - S - M - L - XL - XXL",link:"https://wa.me/p/25643716271903833/5491176277337",struck:40290,offer:37140},
@@ -763,6 +737,79 @@ const products = {
     {img:"remerarosaunisexpatricio.png",name:"Remera Rosa Unisex Patricio",talles:"4 - 6 - 8 - 10 - 12 - 14",link:"https://wa.me/p/25739063545779581/5491176277337",struck:25290,offer:24170}
   ]
 };
+
+// =============================================
+// EVENTOS Y FUNCIONES DEL CARRUSEL Y MODAL
+// =============================================
+
+// Delegación de eventos (funciona incluso con lazy loading)
+document.addEventListener('click', function(e) {
+  // Botón "Ver más"
+  if (e.target.classList.contains('ver-mas')) {
+    e.target.style.display = 'none';
+    e.target.nextElementSibling.style.display = 'grid';
+    return;
+  }
+
+  // Clic en cualquier imagen del catálogo → abre el modal con carrusel
+  if (e.target.tagName === 'IMG' && e.target.dataset.sec && e.target.dataset.idx) {
+    currentSection = e.target.dataset.sec;
+    currentIndex = parseInt(e.target.dataset.idx);
+    openModal();
+    return;
+  }
+
+  // Flechas del modal
+  if (e.target.classList.contains('prev')) {
+    change(-1);
+    return;
+  }
+  if (e.target.classList.contains('next')) {
+    change(1);
+    return;
+  }
+
+  // Cerrar modal
+  if (e.target.id === 'modal' || e.target.classList.contains('close')) {
+    document.getElementById('modal').style.display = 'none';
+  }
+});
+
+function openModal() {
+  const prod = products[currentSection]?.[currentIndex];
+  if (!prod) {
+    console.error("Producto no encontrado:", currentSection, currentIndex);
+    return;
+  }
+
+  const imgElement = document.getElementById('modalImg');
+  imgElement.src = prod.img;
+  imgElement.style.transform = 'scale(1)'; // evita zoom acumulado
+
+  document.getElementById('price').innerHTML = `
+    <span class="struck">$${prod.struck.toLocaleString('es-AR')}</span>
+    <span class="offer">$${prod.offer.toLocaleString('es-AR')}</span><br>
+    ${prod.name}<br>
+    ${prod.talles}
+  `;
+
+  document.getElementById('wa').href = prod.link;
+
+  document.getElementById('modal').style.display = 'flex';
+}
+
+function change(dir) {
+  const arr = products[currentSection];
+  if (!arr || arr.length === 0) return;
+
+  currentIndex = (currentIndex + dir + arr.length) % arr.length;
+  openModal();
+}
+
+console.log("Script completo cargado - clics y carrusel habilitados");
+</script>
+</body>
+</html>
 
 // Delegación de eventos
 document.addEventListener('click', function(e) {
@@ -824,5 +871,6 @@ console.log("Todo listo - eventos delegados");
 </script>
 </body>
 </html>
+
 
 
