@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>PremiumStore</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: url('imagenes/fondoweb.png') no-repeat center center fixed;
+  background-size: cover;
+  color: #fff;
+  min-height: 100vh;
+}
+.container {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 15px;
+  background: rgba(0,0,0,0.68);
+  min-height: 100vh;
+}
+header {
+  background: #000;
+  padding: 20px;
+  text-align: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+h1 { font-size: 3rem; letter-spacing: 3px; }
+video {
+  width: 100%;
+  max-width: 900px;
+  display: block;
+  margin: 40px auto;
+  border-radius: 12px;
+  border: 3px solid #111;
+}
+.intro {
+  max-width: 900px;
+  margin: 0 auto 60px;
+  font-size: 1.18rem;
+  line-height: 1.7;
+  text-align: center;
+}
+section { margin: 90px 0; }
+h2 { font-size: 2.4rem; text-align: center; margin-bottom: 10px; }
+h3 { font-size: 1.3rem; color: #ccc; text-align: center; margin-bottom: 40px; }
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 25px;
+  margin: 40px 0;
+}
+.product {
+  cursor: pointer;
+  border: 3px solid #000;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #111;
+  transition: all 0.25s;
+}
+.product:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 30px rgba(255,255,255,0.15);
+}
+.product img { width: 100%; display: block; }
+.ver-mas {
+  display: block;
+  width: 200px;
+  margin: 40px auto;
+  padding: 15px;
+  background: #000;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.15rem;
+  cursor: pointer;
+  animation: pulse 2.5s infinite;
+}
+@keyframes pulse { 0%,100% {opacity:1} 50% {opacity:0.75} }
+
+/* MODAL CORREGIDO */
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.95);
+  z-index: 9999;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+.modal-content {
+  position: relative;
+  max-width: 90%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.modal-image-wrapper {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 15px;
+}
+.modal img {
+  max-width: 100%;
+  max-height: 65vh;
+  object-fit: contain;
+  border: 4px solid #222;
+  border-radius: 10px;
+  box-shadow: 0 0 25px rgba(0,0,0,0.7);
+}
+.prev, .next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 70px;
+  color: #fff;
+  cursor: pointer;
+  background: rgba(0,0,0,0.4);
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+.prev:hover, .next:hover { background: rgba(255,255,255,0.15); }
+.prev { left: -70px; }
+.next { right: -70px; }
+.close {
+  position: absolute;
+  top: -45px;
+  right: -20px;
+  font-size: 40px;
+  font-weight: normal;
+  color: #ddd;
+  cursor: pointer;
+  background: rgba(0,0,0,0.5);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  line-height: 40px;
+  text-align: center;
+}
+.price {
+  font-size: 1.35rem;
+  line-height: 1.4;
+  margin: 10px 0 15px;
+}
+.struck { text-decoration: line-through; color: #aaa; margin-right: 12px; font-size: 1.2rem; }
+.offer { font-weight: bold; font-size: 1.45rem; }
+.wa-btn {
+  display: block;
+  width: 100%;
+  max-width: 420px; /* mismo ancho aproximado que la foto */
+  margin: 0 auto;
+  padding: 12px;
+  background: #ffffff;
+  color: #000000;
+  text-decoration: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  text-align: center;
+  border: 1px solid #ccc;
+  box-shadow: 0 0 12px rgba(255,255,255,0.3);
+  transition: all 0.3s;
+  animation: pulseSoft 2.8s infinite;
+}
+.wa-btn:hover {
+  background: #f0f0f0;
+  box-shadow: 0 0 20px rgba(255,255,255,0.5);
+}
+@keyframes pulseSoft {
+  0%, 100% { box-shadow: 0 0 12px rgba(255,255,255,0.3); }
+  50% { box-shadow: 0 0 22px rgba(255,255,255,0.5); }
+}
+
+footer {
+  background: #000;
+  padding: 40px 20px;
+  text-align: center;
+  margin-top: 100px;
+}
+footer a { color: #ccc; text-decoration: none; }
+footer a:hover { color: white; }
+
+@media (max-width: 768px) {
+  h1 { font-size: 2.2rem; }
+  h2 { font-size: 2rem; }
+  .gallery { gap: 15px; }
+  .prev { left: -35px; font-size: 50px; width: 45px; height: 45px; }
+  .next { right: -35px; font-size: 50px; width: 45px; height: 45px; }
+  .close { font-size: 32px; top: -35px; right: -10px; width: 35px; height: 35px; line-height: 35px; }
+  .price { font-size: 1.2rem; }
+  .wa-btn { font-size: 1rem; padding: 10px; }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<header>
+<h1>PremiumStore</h1>
+</header>
+
+<video controls>
+<source src="imagenes/videocincoweb.mp4" type="video/mp4">
+Tu navegador no soporta video.
+</video>
+
+<div class="intro">
+<p>“Mirá nuestro catálogo y seleccioná la prenda que más te guste”</p>
+<p>La mejor onda y calidad del mercado</p>
+<p>Tela de calidad premium, negro más intenso y duradero</p>
+<p>Seleccioné el diseño y estilo que más te guste, organizá el envío y tus datos directamente con un vendedor por WhatsApp</p>
+<p>Estampas superpuestas</p>
+<p>"Podés modificar el tamaño y ubicación de la estampa o simplemente dejarla como está"</p>
+<p>Despacho dentro de las 24 a 48 hs hábiles</p>
+</div>
+<!-- REMERAS REGULAR FIT FEMENINAS -->
+<section>
+<h2>REMERAS REGULAR FIT FEMENINAS</h2>
+<h3>todas las estampas son personalizables</h3>
+<div class="gallery">
+<div class="product"><img src="imagenes/portadaremeraregularfitblackalegria.png" data-sec="regular" data-idx="0"></div>
+<div class="product"><img src="imagenes/portadaremeraregularfitblackted.png" data-sec="regular" data-idx="1"></div>
+<div class="product"><img src="imagenes/portadaremeraregularfitwhitebear.png" data-sec="regular" data-idx="2"></div>
+<div class="product"><img src="imagenes/portadaremeraregularfitwhitegum.png" data-sec="regular" data-idx="3"></div>
+</div>
+<button class="ver-mas">Ver más</button>
+<div class="gallery" style="display:none">
+<div class="product"><img src="imagenes/remeraregularfitblackcruz.png" data-sec="regular" data-idx="4"></div>
+<div class="product"><img src="imagenes/remeraregularfitblackemojis.png" data-sec="regular" data-idx="5"></div>
+<div class="product"><img src="imagenes/remeraregularfitblackgrafiti.png" data-sec="regular" data-idx="6"></div>
+<div class="product"><img src="imagenes/remeraregularfitblackmusk.png" data-sec="regular" data-idx="7"></div>
+<div class="product"><img src="imagenes/remeraregularfitblackoriginal.png" data-sec="regular" data-idx="8"></div>
+<div class="product"><img src="imagenes/remeraregularfitblackprimavera.png" data-sec="regular" data-idx="9"></div>
+<div class="product"><img src="imagenes/remeraregularfitblackskullpink.png" data-sec="regular" data-idx="10"></div>
+<div class="product"><img src="imagenes/remeraregularfitblackskullsurreal.png" data-sec="regular" data-idx="11"></div>
+<div class="product"><img src="imagenes/remeraregularfitwhitejesus.png" data-sec="regular" data-idx="12"></div>
+<div class="product"><img src="imagenes/remeraregularfitwhitemusk.png" data-sec="regular" data-idx="13"></div>
+<div class="product"><img src="imagenes/remeraregularfitwhiteoriginal.png" data-sec="regular" data-idx="14"></div>
+<div class="product"><img src="imagenes/remeraregularfitwhiteskullpink.png" data-sec="regular" data-idx="15"></div>
+<div class="product"><img src="imagenes/remeraregularfitwhiteskullsurreal.png" data-sec="regular" data-idx="16"></div>
+<div class="product"><img src="imagenes/remeraregularfitwhitesurreal.png" data-sec="regular" data-idx="17"></div>
+<div class="product"><img src="imagenes/remeraregularfitwhitesurrealist.png" data-sec="regular" data-idx="18"></div>
+<div class="product"><img src="imagenes/remeraregularfitwhiteted.png" data-sec="regular" data-idx="19"></div>
+</div>
+</section>
+
+<!-- REMERAS CLASICAS (UNISEX) -->
+<section>
+<h2>REMERAS CLASICAS (UNISEX)</h2>
+<h3>todas las estampas son personalizables</h3>
+<div class="gallery">
+<div class="product"><img src="imagenes/portadaremeraclasicablackdiego.png" data-sec="clasicas" data-idx="0"></div>
+<div class="product"><img src="imagenes/portadaremeraclasicablackmusk.png" data-sec="clasicas" data-idx="1"></div>
+<div class="product"><img src="imagenes/portadaremeraclasicawhiteattitude.png" data-sec="clasicas" data-idx="2"></div>
+<div class="product"><img src="imagenes/portadaremeraclasicawhitebunny.png" data-sec="clasicas" data-idx="3"></div>
+</div>
+<button class="ver-mas">Ver más</button>
+<div class="gallery" style="display:none">
+<div class="product"><img src="imagenes/remeraclasicablackalegria.png" data-sec="clasicas" data-idx="4"></div>
+<div class="product"><img src="imagenes/remeraclasicablackcabra.png" data-sec="clasicas" data-idx="5"></div>
+<div class="product"><img src="imagenes/remeraclasicablackcruz.png" data-sec="clasicas" data-idx="6"></div>
+<div class="product"><img src="imagenes/remeraclasicablackdope.png" data-sec="clasicas" data-idx="7"></div>
+<div class="product"><img src="imagenes/remeraclasicablackfe.png" data-sec="clasicas" data-idx="8"></div>
+<div class="product"><img src="imagenes/remeraclasicablackjesus.png" data-sec="clasicas" data-idx="9"></div>
+<div class="product"><img src="imagenes/remeraclasicablackoriginal.png" data-sec="clasicas" data-idx="10"></div>
+<div class="product"><img src="imagenes/remeraclasicablackskullsurreal.png" data-sec="clasicas" data-idx="11"></div>
+<div class="product"><img src="imagenes/remeraclasicawhitearcangel.png" data-sec="clasicas" data-idx="12"></div>
+<div class="product"><img src="imagenes/remeraclasicawhitecruzfe.png" data-sec="clasicas" data-idx="13"></div>
+<div class="product"><img src="imagenes/remeraclasicawhitedope.png" data-sec="clasicas" data-idx="14"></div>
+<div class="product"><img src="imagenes/remeraclasicawhitefe.png" data-sec="clasicas" data-idx="15"></div>
+<div class="product"><img src="imagenes/remeraclasicawhitejesus.png" data-sec="clasicas" data-idx="16"></div>
+<div class="product"><img src="imagenes/remeraclasicawhitelion.png" data-sec="clasicas" data-idx="17"></div>
+<div class="product"><img src="imagenes/remeraclasicawhiteoriginal.png" data-sec="clasicas" data-idx="18"></div>
+<div class="product"><img src="imagenes/remeraclasicawhiteskullsurreal.png" data-sec="clasicas" data-idx="19"></div>
+</div>
+</section>
+
+<!-- REMERAS OVERSIZE (UNISEX) -->
+<section>
+<h2>REMERAS OVERSIZE (UNISEX)</h2>
+<h3>todas las estampas son personalizables</h3>
+<div class="gallery">
+<div class="product"><img src="imagenes/portadaremeraunisexoversizeemojisoriginal.png" data-sec="oversize" data-idx="0"></div>
+<div class="product"><img src="imagenes/portadaremeraunisexoversizeoriginal.png" data-sec="oversize" data-idx="1"></div>
+<div class="product"><img src="imagenes/portadaremeraunisexoversizeoriginalemojis.png" data-sec="oversize" data-idx="2"></div>
+<div class="product"><img src="imagenes/portadaremeraunisexoversizeskullpinkbadboy.png" data-sec="oversize" data-idx="3"></div>
+</div>
+<button class="ver-mas">Ver más</button>
+<div class="gallery" style="display:none">
+<div class="product"><img src="imagenes/remeraunisexoversizeblackbadboy.png" data-sec="oversize" data-idx="4"></div>
+<div class="product"><img src="imagenes/remeraunisexoversizeblackcruz.png" data-sec="oversize" data-idx="5"></div>
+<div class="product"><img src="imagenes/remeraunisexoversizeblackcruzlarga.png" data-sec="oversize" data-idx="6"></div>
+<div class="product"><img src="imagenes/remeraunisexoversizeblackdiez.png" data-sec="oversize" data-idx="7"></div>
+<div class="product"><img src="imagenes/remeraunisexoversizeblackemojis.png" data-sec="oversize" data-idx="8"></div>
+<div class="product"><img src="imagenes/remeraunisexoversizeblackfe.png" data-sec="oversize" data-idx="9"></div>
+<div class="product"><img src="imagenes/remeraunisexoversizeblackgum.png" data-sec="oversize" data-idx="10"></div>
+<div class="product"><img src="imagenes/remeraunisexoversizeblackmessi.png" data-sec="oversize" data-idx="11"></div>
+<div class="product"><img src="imagenes/remeraunisexoversizeblackmusk.png" data-sec="oversize" data-idx="12"></div>
+<div class="product"><img src="imagenes/remeraunisexoversizeblacknolimit.png" data-sec="oversize" data-idx="13"></div>
+<div class="product"><img src="imagenes/remeraunisexoversizeblackorigin.png" data-sec="oversize" data-idx="14"></div>
+<div class="product"><img src="imagenes/remeraunisexoversizeblackosoted.png" data-sec="oversize" data-idx="15"></div>
+<div class="product"><img src="imagenes/remeraunisexoversizeblacksurreal.png" data-sec="oversize" data-idx="16"></div>
+<div class="product"><img src="imagenes/remeraunisexoversizeblackted.png" data-sec="oversize" data-idx="17"></div>
+<div class="product"><img src="imagenes/remeraunisexoversizewhiteabano.png" data-sec="oversize" data-idx="18"></div>
+<div class="product"><img src="imagenes/remeraunisexoversizewhitealegria.png" data-sec="oversize" data-idx="19"></div>
+<div class="product"><img src="imagenes/remeraunisexoversizewhitearcangel.png" data-sec="oversize" data-idx="20"></div>
+<div class="product"><img src="imagenes/remeraunisexoversizewhitearcoiris.png" data-sec="oversize" data-idx="21"></div>
+<div class="product"><img src="imagenes/remeraunisexoversizewhitecabra.png" data-sec="oversize" data-idx="22"></div>
+<div class="product"><img src="imagenes/remeraunisexoversizewhitediego.png" data-sec="oversize" data-idx="23"></div>
+<div class="product"><img src="imagenes/remeraunisexoversizewhiteemojis.png" data-sec="oversize" data-idx="24"></div>
+<div class="product"><img src="imagenes/remeraunisexoversizewhitejesus.png" data-sec="oversize" data-idx="25"></div>
+<div class="product"><img src="imagenes/remeraunisexoversizewhitelion.png" data-sec="oversize" data-idx="26"></div>
+<div class="product"><img src="imagenes/remeraunisexoversizewhitemickeypink.png" data-sec="oversize" data-idx="27"></div>
+<div class="product"><img src="imagenes/remeraunisexoversizewhiteoriginal.png" data-sec="oversize" data-idx="28"></div>
+<div class="product"><img src="imagenes/remeraunisexoversizewhiteprimavera.png" data-sec="oversize" data-idx="29"></div>
+<div class="product"><img src="imagenes/remeraunisexoversizewhiteskullpink.png" data-sec="oversize" data-idx="30"></div>
+<div class="product"><img src="imagenes/remeraunisexoversizewhiteted.png" data-sec="oversize" data-idx="31"></div>
+</div>
+</section>
+<!-- REMERAS OVERSIZE STONE WASH (UNISEX) -->
+<section>
+<h2>REMERAS OVERSIZE STONE WASH (UNISEX)</h2>
+<h3>todas las estampas son personalizables</h3>
+<div class="gallery">
+<div class="product"><img src="imagenes/portadaremeraoversizestonewashblackbeargafas.png" data-sec="stone-wash" data-idx="0"></div>
+<div class="product"><img src="imagenes/portadaremeraoversizestonewashblackbearpink.png" data-sec="stone-wash" data-idx="1"></div>
+<div class="product"><img src="imagenes/portadaremeraoversizestonewashwhitechillbear.png" data-sec="stone-wash" data-idx="2"></div>
+<div class="product"><img src="imagenes/portadaremeraoversizestonewashwhitebearpink.png" data-sec="stone-wash" data-idx="3"></div>
+</div>
+<button class="ver-mas">Ver más</button>
+<div class="gallery" style="display:none">
+<div class="product"><img src="imagenes/remeraoversizestonewashblackbaka.png" data-sec="stone-wash" data-idx="4"></div>
+<div class="product"><img src="imagenes/remeraoversizestonewashblackcabra.png" data-sec="stone-wash" data-idx="5"></div>
+<div class="product"><img src="imagenes/remeraoversizestonewashblackgorilla.png" data-sec="stone-wash" data-idx="6"></div>
+<div class="product"><img src="imagenes/remeraoversizestonewashblackgorillafrente.png" data-sec="stone-wash" data-idx="7"></div>
+<div class="product"><img src="imagenes/remeraoversizestonewashblackoriginal.png" data-sec="stone-wash" data-idx="8"></div>
+<div class="product"><img src="imagenes/remeraoversizestonewashblackted.png" data-sec="stone-wash" data-idx="9"></div>
+<div class="product"><img src="imagenes/remeraoversizestonewashblacktedbaño.png" data-sec="stone-wash" data-idx="10"></div>
+<div class="product"><img src="imagenes/remeraoversizestonewashblacktedblond.png" data-sec="stone-wash" data-idx="11"></div>
+<div class="product"><img src="imagenes/remeraoversizestonewashblacktedduff.png" data-sec="stone-wash" data-idx="12"></div>
+<div class="product"><img src="imagenes/remeraoversizestonewashblacktedgafas.png" data-sec="stone-wash" data-idx="13"></div>
+<div class="product"><img src="imagenes/remeraoversizestonewashwhitebakaout.png" data-sec="stone-wash" data-idx="14"></div>
+<div class="product"><img src="imagenes/remeraoversizestonewashwhitebaño.png" data-sec="stone-wash" data-idx="15"></div>
+<div class="product"><img src="imagenes/remeraoversizestonewashwhitebunny.png" data-sec="stone-wash" data-idx="16"></div>
+<div class="product"><img src="imagenes/remeraoversizestonewashwhitecaritas.png" data-sec="stone-wash" data-idx="17"></div>
+<div class="product"><img src="imagenes/remeraoversizestonewashwhitechillout.png" data-sec="stone-wash" data-idx="18"></div>
+<div class="product"><img src="imagenes/remeraoversizestonewashwhitecouraje.png" data-sec="stone-wash" data-idx="19"></div>
+<div class="product"><img src="imagenes/remeraoversizestonewashwhitepanter.png" data-sec="stone-wash" data-idx="20"></div>
+<div class="product"><img src="imagenes/remeraoversizestonewashwhitepanterpinks.png" data-sec="stone-wash" data-idx="21"></div>
+<div class="product"><img src="imagenes/remeraoversizestonewashwhitepanteryellow.png" data-sec="stone-wash" data-idx="22"></div>
+<div class="product"><img src="imagenes/remeraoversizestonewashwhitepinkbear.png" data-sec="stone-wash" data-idx="23"></div>
+</div>
+</section>
+
+<!-- REMERAS CROP FEMENINAS -->
+<section>
+<h2>REMERAS CROP FEMENINAS</h2>
+<h3>todas las estampas son personalizables</h3>
+<div class="gallery">
+<div class="product"><img src="imagenes/portadaremeracropbrownglow.png" data-sec="crop" data-idx="0"></div>
+<div class="product"><img src="imagenes/portadaremeracropgraybitch.png" data-sec="crop" data-idx="1"></div>
+<div class="product"><img src="imagenes/portadaremeracroplightmauveheart.png" data-sec="crop" data-idx="2"></div>
+<div class="product"><img src="imagenes/portadaremeracropmauveoriginal.png" data-sec="crop" data-idx="3"></div>
+</div>
+<button class="ver-mas">Ver más</button>
+<div class="gallery" style="display:none">
+<div class="product"><img src="imagenes/remeracropbrownbitch.png" data-sec="crop" data-idx="4"></div>
+<div class="product"><img src="imagenes/remeracropbrowncherrylips.png" data-sec="crop" data-idx="5"></div>
+<div class="product"><img src="imagenes/remeracropbrownlovecat.png" data-sec="crop" data-idx="6"></div>
+<div class="product"><img src="imagenes/remeracropbrownoriginal.png" data-sec="crop" data-idx="7"></div>
+<div class="product"><img src="imagenes/remeracropgraymedusa.png" data-sec="crop" data-idx="8"></div>
+<div class="product"><img src="imagenes/remeracropgraymusic.png" data-sec="crop" data-idx="9"></div>
+<div class="product"><img src="imagenes/remeracropgrayonmusic.png" data-sec="crop" data-idx="10"></div>
+<div class="product"><img src="imagenes/remeracropgrayoriginal.png" data-sec="crop" data-idx="11"></div>
+<div class="product"><img src="imagenes/remeracroplightmauvecopa.png" data-sec="crop" data-idx="12"></div>
+<div class="product"><img src="imagenes/remeracroplightmauvenewyear.png" data-sec="crop" data-idx="13"></div>
+<div class="product"><img src="imagenes/remeracroplightmauveoriginal.png" data-sec="crop" data-idx="14"></div>
+<div class="product"><img src="imagenes/remeracroplightmauvetwoeyes.png" data-sec="crop" data-idx="15"></div>
+<div class="product"><img src="imagenes/remeracropmauvecrema.png" data-sec="crop" data-idx="16"></div>
+<div class="product"><img src="imagenes/remeracropmauvelips.png" data-sec="crop" data-idx="17"></div>
+<div class="product"><img src="imagenes/remeracropmauvelipsart.png" data-sec="crop" data-idx="18"></div>
+<div class="product"><img src="imagenes/remeracropmauvewatermelonlips.png" data-sec="crop" data-idx="19"></div>
+</div>
+</section>
+
+<!-- REMERAS MUSCULOSA DE MORLEY FEMENINAS -->
+<section>
+<h2>REMERAS MUSCULOSA DE MORLEY FEMENINAS</h2>
+<h3>todas las estampas son personalizables</h3>
+<div class="gallery">
+<div class="product"><img src="imagenes/portadamusculosademorleygraybitch.png" data-sec="morley" data-idx="0"></div>
+<div class="product"><img src="imagenes/portadamusculosademorleygrayheartpink.png" data-sec="morley" data-idx="1"></div>
+<div class="product"><img src="imagenes/portadamusculosademorleygrayoriginal.png" data-sec="morley" data-idx="2"></div>
+<div class="product"><img src="imagenes/portadamusculosademorleygraypink.png" data-sec="morley" data-idx="3"></div>
+</div>
+<button class="ver-mas">Ver más</button>
+<div class="gallery" style="display:none">
+<div class="product"><img src="imagenes/musculosademorleygraybearpink.png" data-sec="morley" data-idx="4"></div>
+<div class="product"><img src="imagenes/musculosademorleygraychill.png" data-sec="morley" data-idx="5"></div>
+<div class="product"><img src="imagenes/musculosademorleygrayglow.png" data-sec="morley" data-idx="6"></div>
+<div class="product"><img src="imagenes/musculosademorleygraymickeypink.png" data-sec="morley" data-idx="7"></div>
+</div>
+</section>
+<!-- BUZOS HODIE UNISEX -->
+<section>
+<h2>BUZOS HODIE UNISEX</h2>
+<h3>todas las estampas son personalizables</h3>
+<div class="gallery">
+<div class="product"><img src="imagenes/portadabuzohoddiestonewashunisexattitude.png" data-sec="hodie" data-idx="0"></div>
+<div class="product"><img src="imagenes/portadabuzohoddiewhiteunisexnolimit.png" data-sec="hodie" data-idx="1"></div>
+<div class="product"><img src="imagenes/portadabuzohoddiestonewashunisexoriginal.png" data-sec="hodie" data-idx="2"></div>
+<div class="product"><img src="imagenes/portadabuzohoddiewhiteunisexpanterpink.png" data-sec="hodie" data-idx="3"></div>
+</div>
+<button class="ver-mas">Ver más</button>
+<div class="gallery" style="display:none">
+<div class="product"><img src="imagenes/buzohoddieblackunisexbadboy.png" data-sec="hodie" data-idx="4"></div>
+<div class="product"><img src="imagenes/buzohoddieblackunisexbearpink.png" data-sec="hodie" data-idx="5"></div>
+<div class="product"><img src="imagenes/buzohoddieblackunisexbearpinkmini.png" data-sec="hodie" data-idx="6"></div>
+<div class="product"><img src="imagenes/buzohoddieblackunisexemojis.png" data-sec="hodie" data-idx="7"></div>
+<div class="product"><img src="imagenes/buzohoddieblackunisexnolimit.png" data-sec="hodie" data-idx="8"></div>
+<div class="product"><img src="imagenes/buzohoddieblackunisexonmusic.png" data-sec="hodie" data-idx="9"></div>
+<div class="product"><img src="imagenes/buzohoddieblackunisexoriginal.png" data-sec="hodie" data-idx="10"></div>
+<div class="product"><img src="imagenes/buzohoddieblackunisexpanter.png" data-sec="hodie" data-idx="11"></div>
+<div class="product"><img src="imagenes/buzohoddieblackunisexprimavera.png" data-sec="hodie" data-idx="12"></div>
+<div class="product"><img src="imagenes/buzohoddiestonewashunisexbaka.png" data-sec="hodie" data-idx="13"></div>
+<div class="product"><img src="imagenes/buzohoddiestonewashunisexglow.png" data-sec="hodie" data-idx="14"></div>
+<div class="product"><img src="imagenes/buzohoddiestonewashunisexmusk.png" data-sec="hodie" data-idx="15"></div>
+<div class="product"><img src="imagenes/buzohoddiestonewashunisexskullpink.png" data-sec="hodie" data-idx="16"></div>
+<div class="product"><img src="imagenes/buzohoddiestonewashunisexsurreal.png" data-sec="hodie" data-idx="17"></div>
+<div class="product"><img src="imagenes/buzohoddiewhiteunisexbaka.png" data-sec="hodie" data-idx="18"></div>
+<div class="product"><img src="imagenes/buzohoddiewhiteunisexbearpink.png" data-sec="hodie" data-idx="19"></div>
+</div>
+</section>
+
+<!-- BUZOS CUELLO REDONDO -->
+<section>
+<h2>BUZOS CUELLO REDONDO</h2>
+<h3>todas las estampas son personalizables</h3>
+<div class="gallery">
+<div class="product"><img src="imagenes/portadabuzocuelloredondostonewashoversizebearpink.png" data-sec="cuello-redondo" data-idx="0"></div>
+<div class="product"><img src="imagenes/portadabuzocuelloredondowhiteoversizebearpink.png" data-sec="cuello-redondo" data-idx="1"></div>
+<div class="product"><img src="imagenes/portadabuzocuelloredondostonewashoversizemanoriginal.png" data-sec="cuello-redondo" data-idx="2"></div>
+<div class="product"><img src="imagenes/portadabuzocuelloredondowhiteoversizechill.png" data-sec="cuello-redondo" data-idx="3"></div>
+</div>
+<button class="ver-mas">Ver más</button>
+<div class="gallery" style="display:none">
+<div class="product"><img src="imagenes/buzocuelloredondoblackoversizebaka.png" data-sec="cuello-redondo" data-idx="4"></div>
+<div class="product"><img src="imagenes/buzocuelloredondoblackoversizebearganster.png" data-sec="cuello-redondo" data-idx="5"></div>
+<div class="product"><img src="imagenes/buzocuelloredondoblackoversizegum.png" data-sec="cuello-redondo" data-idx="6"></div>
+<div class="product"><img src="imagenes/buzocuelloredondoblackoversizeonmusic.png" data-sec="cuello-redondo" data-idx="7"></div>
+<div class="product"><img src="imagenes/buzocuelloredondostonewashoversizeattitudeoscuro.png" data-sec="cuello-redondo" data-idx="8"></div>
+<div class="product"><img src="imagenes/buzocuelloredondostonewashoversizeattitudewhit.png" data-sec="cuello-redondo" data-idx="9"></div>
+<div class="product"><img src="imagenes/buzocuelloredondostonewashoversizebearpinkback.png" data-sec="cuello-redondo" data-idx="10"></div>
+<div class="product"><img src="imagenes/buzocuelloredondostonewashoversizelion.png" data-sec="cuello-redondo" data-idx="11"></div>
+<div class="product"><img src="imagenes/buzocuelloredondostonewashoversizeonmusic.png" data-sec="cuello-redondo" data-idx="12"></div>
+<div class="product"><img src="imagenes/buzocuelloredondostonewashoversizeoriginal.png" data-sec="cuello-redondo" data-idx="13"></div>
+<div class="product"><img src="imagenes/buzocuelloredondowhiteoversizeskullpink.png" data-sec="cuello-redondo" data-idx="14"></div>
+<div class="product"><img src="imagenes/buzocuelloredondowhiteoversizeskullpinkback.png" data-sec="cuello-redondo" data-idx="15"></div>
+</div>
+</section>
+<!-- REMERAS INFANTILES UNISEX -->
+<section>
+<h2>REMERAS INFANTILES UNISEX</h2>
+<h3>todas las estampas son personalizables</h3>
+<div class="gallery">
+<div class="product"><img src="imagenes/remeraamarillaunisexbackattitude.png" data-sec="infantiles" data-idx="0"></div>
+<div class="product"><img src="imagenes/remeracelesteunisexstich.png" data-sec="infantiles" data-idx="1"></div>
+<div class="product"><img src="imagenes/remerarosaunisexpink.png" data-sec="infantiles" data-idx="2"></div>
+<div class="product"><img src="imagenes/remeragrisunisexoriginal.png" data-sec="infantiles" data-idx="3"></div>
+</div>
+<button class="ver-mas">Ver más</button>
+<div class="gallery" style="display:none">
+<div class="product"><img src="imagenes/remeraamarillaunisexattitude.png" data-sec="infantiles" data-idx="4"></div>
+<div class="product"><img src="imagenes/remeraamarillaunisexcoraje.png" data-sec="infantiles" data-idx="5"></div>
+<div class="product"><img src="imagenes/remeraamarillaunisexoriginal.png" data-sec="infantiles" data-idx="6"></div>
+<div class="product"><img src="imagenes/remeracelesteunisexdiez.png" data-sec="infantiles" data-idx="7"></div>
+<div class="product"><img src="imagenes/remeracelesteunisexmusic.png" data-sec="infantiles" data-idx="8"></div>
+<div class="product"><img src="imagenes/remeracelesteunisexoriginal.png" data-sec="infantiles" data-idx="9"></div>
+<div class="product"><img src="imagenes/remeragrisunisexalegria.png" data-sec="infantiles" data-idx="10"></div>
+<div class="product"><img src="imagenes/remeragrisunisexcoraje.png" data-sec="infantiles" data-idx="11"></div>
+<div class="product"><img src="imagenes/remeragrisunisexcowardlydog.png" data-sec="infantiles" data-idx="12"></div>
+<div class="product"><img src="imagenes/remerarosaunisexalegria.png" data-sec="infantiles" data-idx="13"></div>
+<div class="product"><img src="imagenes/remerarosaunisexoriginal.png" data-sec="infantiles" data-idx="14"></div>
+<div class="product"><img src="imagenes/remerarosaunisexpatricio.png" data-sec="infantiles" data-idx="15"></div>
+</div>
+</section>
+
+</div> <!-- cierre .container -->
+<!-- MODAL -->
+<div id="modal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="document.getElementById('modal').style.display='none'">×</span>
+    <div class="modal-image-wrapper">
+      <span class="prev" onclick="change(-1)">‹</span>
+      <img id="modalImg" src="" alt="">
+      <span class="next" onclick="change(1)">›</span>
+    </div>
+    <div class="price" id="price"></div>
+    <a id="wa" class="wa-btn" href="#" target="_blank">Pedir por WhatsApp</a>
+  </div>
+</div>
+
+<footer>
+  <p>Política de devolución: <a href="https://politicas-tienda-premium.pages.dev/" target="_blank">CLICK ACÁ</a></p>
+  <p>Contacto: <a href="https://wa.me/5491176277337?text=Hola%20tengo%20una%20consulta%20para%20hacer" target="_blank">(11) 7627-7337</a></p>
+  <p class="small">premiumstore todos los derechos reservados © 2025</p>
+</footer>
+
+<script>
+let currentSection = '';
+let currentIndex = 0;
+
+const products = {
+  regular: [
+    {img:"imagenes/portadaremeraregularfitblackalegria.png",name:"Regular fit Black Alegria",talles:"S - M - L - XL - XXL",link:"https://wa.me/p/26239062775698664/5491176277337",struck:28190,offer:27170},
+    {img:"imagenes/portadaremeraregularfitblackted.png",name:"Regular fit Black Ted",talles:"S - M - L - XL - XXL",link:"https://wa.me/p/26220907274180926/5491176277337",struck:28190,offer:27170},
+    {img:"imagenes/portadaremeraregularfitwhitebear.png",name:"Regular fit White Bear",talles:"S - M - L - XL - XXL",link:"https://wa.me/p/26118793481071785/5491176277337",struck:27370,offer:24670},
+    {img:"imagenes/portadaremeraregularfitwhitegum.png",name:"Regular fit White Gum",talles:"S - M - L - XL - XXL",link:"https://wa.me/p/25808009002223611/5491176277337",struck:27370,offer:24670},
+    {img:"imagenes/remeraregularfitblackcruz.png",name:"Regular fit Black Cruz",talles:"S - M - L - XL - XXL",link:"https://wa.me/p/25647238108273072/5491176277337",struck:28190,offer:27170},
+    {img:"imagenes/remeraregularfitblackemojis.png",name:"Regular fit Black Emojis",talles:"S - M - L - XL - XXL",link:"https://wa.me/p/26157369330513668/5491176277337",struck:28190,offer:27170},
+    {img:"imagenes/remeraregularfitblackgrafiti.png",name:"Regular fit Black Grafiti",talles:"S - M - L - XL - XXL",link:"https://wa.me/p/25945415395092308/5491176277337",struck:28190,offer:27170},
+    {img:"imagenes/remeraregularfitblackmusk.png",name:"Regular fit Black Musk",talles:"S - M - L - XL - XXL",link:"https://wa.me/p/25625711043756996/5491176277337",struck:28190,offer:27170},
+    {img:"imagenes/remeraregularfitblackoriginal.png",name:"Regular fit Black Original",talles:"S - M - L - XL - XXL",link:"https://wa.me/p/33816535451326623/5491176277337",struck:27170,offer:26270},
+    {img:"imagenes/remeraregularfitblackprimavera.png",name:"Regular fit Black Primavera",talles:"S - M - L - XL - XXL",link:"https://wa.me/p/33435315989446401/5491176277337",struck:28190,offer:27170},
+    {img:"imagenes/remeraregularfitblackskullpink.png",name:"Regular fit Black Skull Pink",talles:"S - M - L - XL - XXL",link:"https://wa.me/p/25341581568857396/5491176277337",struck:28190,offer:27170},
+    {img:"imagenes/remeraregularfitblackskullsurreal.png",name:"Regular fit Black Skull Surreal",talles:"S - M - L - XL - XXL",link:"https://wa.me/p/25776965381966255/5491176277337",struck:28190,offer:27170},
+    {img:"imagenes/remeraregularfitwhitejesus.png",name:"Regular fit White Jesus",talles:"S - M - L - XL - XXL",link:"https://wa.me/p/25502487752712174/5491176277337",struck:27370,offer:24670},
+    {img:"imagenes/remeraregularfitwhitemusk.png",name:"Regular fit White Musk",talles:"S - M - L - XL - XXL",link:"https://wa.me/p/26599786406288698/5491176277337",struck:27370,offer:24670},
+    {img:"imagenes/remeraregularfitwhiteoriginal.png",name:"Regular fit White Original",talles:"S - M - L - XL - XXL",link:"https://wa.me/p/33977913538488923/5491176277337",struck:26290,offer:23970},
+    {img:"imagenes/remeraregularfitwhiteskullpink.png",name:"Regular fit White Skull Pink",talles:"S - M - L - XL - XXL",link:"https://wa.me/p/33331188176529483/5491176277337",struck:27370,offer:24670},
+    {img:"imagenes/remeraregularfitwhiteskullsurreal.png",name:"Regular fit White Skull Surreal",talles:"S - M - L - XL - XXL",link:"https://wa.me/p/25960249450278246/5491176277337",struck:27370,offer:24670},
+    {img:"imagenes/remeraregularfitwhitesurreal.png",name:"Regular fit White Surreal",talles:"S - M - L - XL - XXL",link:"https://wa.me/p/26625914363663801/5491176277337",struck:27370,offer:24670},
+    {img:"imagenes/remeraregularfitwhitesurrealist.png",name:"Regular fit White Surrealist",talles:"S - M - L - XL - XXL",link:"https://wa.me/p/25582577844730826/5491176277337",struck:27370,offer:24670},
+    {img:"imagenes/remeraregularfitwhiteted.png",name:"Regular fit White Ted",talles:"S - M - L - XL - XXL",link:"https://wa.me/p/25013727188300638/5491176277337",struck:27370,offer:24670}
+  ],
+  clasicas: [
+    {img:"imagenes/portadaremeraclasicablackdiego.png",name:"Clasica Black Diego",talles:"S - M - L - XL - XXL",link:"https://wa.me/p/25339403992425454/5491176277337",struck:28190,offer:26970},
+    {img:"imagenes/portadaremeraclasicablackmusk.png",name:"Clasica Black Musk",talles:"S - M - L - XL - XXL",link:"https://wa.me/p/33426699633641918/5491176277337",struck:28190,offer:26970},
+    {img:"imagenes/portadaremeraclasicawhiteattitude.png",name:"Clasica White Attitude",talles:"S - M - L - XL - XXL",link:"https://wa.me/p/34418923617694954/5491176277337",struck:27790,offer:24990},
+    {img:"imagenes/portadaremeraclasicawhitebunny.png",name:"Clasica White Bunny",talles:"S - M - L - XL - XXL",link:"https://wa.me/p/25590735913954162/5491176277337",struck:27790,offer:24990},
+    {img:"imagenes/remeraclasicablackalegria.png",name:"Clasica Black Alegria",talles:"S - M - L - XL - XXL",link:"https://wa.me/p/33471790045799781/5491176277337",struck:28190,offer:26970},
+    {img:"imagenes/remeraclasicablackcabra.png",name:"Clasica Black Cabra",talles:"S - M - L - XL - XXL",link:"https://wa.me/p/24056492647382049/5491176277337",struck:28190,offer:26970},
+    {img:"imagenes/remeraclasicablackcruz.png",name:"Clasica Black Cruz",talles:"S - M - L - XL - XXL",link:"https://wa.me/p/24067020019662564/5491176277337",struck:28190,offer:26970},
+    {img:"imagenes/remeraclasicablackdope.png",name:"Clasica Black Dope",talles:"S - M - L - XL - XXL",link:"https://wa.me/p/28754179390884565/5491176277337",struck:28190,offer:26970},
+    {img:"imagenes/remeraclasicablackfe.png",name:"Clasica Black Fe",talles:"S - M - L - XL - XXL",link:"https://wa.me/p/25663571779918624/5491176277337",struck:28190,offer:26970},
+    {img:"imagenes/remeraclasicablackjesus.png",name:"Clasica Black Jesus",talles:"S - M - L - XL - XXL",link:"https://wa.me/p/33280939328220216/5491176277337",struck:28190,offer:26970},
+    {img:"imagenes/remeraclasicablackoriginal.png",name:"Clasica Black Original",talles:"S - M - L - XL - XXL",link:"https://wa.me/p/24610382608638607/5491176277337",struck:28890,offer:25690},
+    {img:"imagenes/remeraclasicablackskullsurreal.png",name:"Clasica Black Skull Surreal",talles:"S - M - L - XL - XXL",link:"https://wa.me/p/25953031087659972/5491176277337",struck:28190,offer:26970},
+    {img:"imagenes/remeraclasicawhitearcangel.png",name:"Clasica White Arcangel",talles:"S - M - L - XL - XXL",link:"https://wa.me/p/26162049426713991/5491176277337",struck:27790,offer:24990},
+    {img:"imagenes/remeraclasicawhitecruzfe.png",name:"Clasica White Cruz Fe",talles:"S - M - L - XL - XXL",link:"https://wa.me/p/25414124424954233/5491176277337",struck:27790,offer:24990},
+    {img:"imagenes/remeraclasicawhitedope.png",name:"Clasica White Dope",talles:"S - M - L - XL - XXL",link:"https://wa.me/p/25586887207600370/5491176277337",struck:27790,offer:24990},
+    {img:"imagenes/remeraclasicawhitefe.png",name:"Clasica White Fe",talles:"S - M - L - XL - XXL",link:"https://wa.me/p/25584575737867747/5491176277337",struck:27790,offer:24990},
+    {img:"imagenes/remeraclasicawhitejesus.png",name:"Clasica White Jesus",talles:"S - M - L - XL - XXL",link:"https://wa.me/p/25571076249251064/5491176277337",struck:27790,offer:24990},
+    {img:"imagenes/remeraclasicawhitelion.png",name:"Clasica White Lion",talles:"S - M - L - XL - XXL",link:"https://wa.me/p/25806973845581704/5491176277337",struck:27790,offer:24990},
+    {img:"imagenes/remeraclasicawhiteoriginal.png",name:"Clasica White Original",talles:"S - M - L - XL - XXL",link:"https://wa.me/p/26042713335323147/5491176277337",struck:26190,offer:24990},
+    {img:"imagenes/remeraclasicawhiteskullsurreal.png",name:"Clasica White Skull Surreal",talles:"S - M - L - XL - XXL",link:"https://wa.me/p/25825567897105221/5491176277337",struck:27790,offer:24990}
+  ],
+  oversize: [
+    {img:"imagenes/portadaremeraunisexoversizeemojisoriginal.png",name:"Combo Oversize White Emojis & Black Original",talles:"XXS - XS - S - M - L - XL - XXL",link:"https://wa.me/p/26248552814751423/5491176277337",struck:27790,offer:26570},
+    {img:"imagenes/portadaremeraunisexoversizeoriginal.png",name:"Combo Oversize White Original & Black Original",talles:"XXS - XS - S - M - L - XL - XXL",link:"https://wa.me/p/33898719563075037/5491176277337",struck:27790,offer:26570},
+    {img:"imagenes/portadaremeraunisexoversizeoriginalemojis.png",name:"Combo White Original & Black Emojis",talles:"XXS - XS - S - M - L - XL - XXL",link:"https://wa.me/p/26711793388421493/5491176277337",struck:27790,offer:26570},
+    {img:"imagenes/portadaremeraunisexoversizeskullpinkbadboy.png",name:"Combo Oversize White Pink & Black BadBoy",talles:"XXS - XS - S - M - L - XL - XXL",link:"https://wa.me/p/26924934113761794/5491176277337",struck:27790,offer:26570},
+    {img:"imagenes/remeraunisexoversizeblackbadboy.png",name:"Oversize Black BadBoy",talles:"XXS - XS - S - M - L - XL - XXL",link:"https://wa.me/p/26027809163523116/5491176277337",struck:29590,offer:27970},
+    {img:"imagenes/remeraunisexoversizeblackcruz.png",name:"Oversize Black Cruz",talles:"XXS - XS - S - M - L - XL - XXL",link:"https://wa.me/p/25683161851343580/5491176277337",struck:29590,offer:27970},
+    {img:"imagenes/remeraunisexoversizeblackcruzlarga.png",name:"Oversize Black Cruz Larga",talles:"XXS - XS - S - M - L - XL - XXL",link:"https://wa.me/p/25831566163169132/5491176277337",struck:29590,offer:27970},
+    {img:"imagenes/remeraunisexoversizeblackdiez.png",name:"Oversize Black Diez",talles:"XXS - XS - S - M - L - XL - XXL",link:"https://wa.me/p/26192660140421713/5491176277337",struck:29590,offer:27970},
+    {img:"imagenes/remeraunisexoversizeblackemojis.png",name:"Oversize Black Emojis",talles:"XXS - XS - S - M - L - XL - XXL",link:"https://wa.me/p/25962989510058414/5491176277337",struck:29590,offer:27970},
+    {img:"imagenes/remeraunisexoversizeblackfe.png",name:"Oversize Black Fe",talles:"XXS - XS - S - M - L - XL - XXL",link:"https://wa.me/p/25028687233473148/5491176277337",struck:29590,offer:27970},
+    {img:"imagenes/remeraunisexoversizeblackgum.png",name:"Oversize Black Gum",talles:"XXS - XS - S - M - L - XL - XXL",link:"https://wa.me/p/25533578916301341/5491176277337",struck:29590,offer:27970},
+    {img:"imagenes/remeraunisexoversizeblackmessi.png",name:"Oversize Black Messi",talles:"XXS - XS - S - M - L - XL - XXL",link:"https://wa.me/p/25726507606990069/5491176277337",struck:29590,offer:27970},
+    {img:"imagenes/remeraunisexoversizeblackmusk.png",name:"Oversize Black Musk",talles:"XXS - XS - S - M - L - XL - XXL",link:"https://wa.me/p/25551767414451612/5491176277337",struck:29590,offer:27970},
+    {img:"imagenes/remeraunisexoversizeblacknolimit.png",name:"Oversize Black NoLimit",talles:"XXS - XS - S - M - L - XL - XXL",link:"https://wa.me/p/33441157175532884/5491176277337",struck:29590,offer:27970},
+    {img:"imagenes/remeraunisexoversizeblackorigin.png",name:"Oversize Black Origin",talles:"XXS - XS - S - M - L - XL - XXL",link:"https://wa.me/p/33558541787125108/5491176277337",struck:29590,offer:27970},
+    {img:"imagenes/remeraunisexoversizeblackosoted.png",name:"Oversize Black Oso Ted",talles:"XXS - XS - S - M - L - XL - XXL",link:"https://wa.me/p/25969334336032631/5491176277337",struck:29590,offer:27970},
+    {img:"imagenes/remeraunisexoversizeblacksurreal.png",name:"Oversize Black Surreal",talles:"XXS - XS - S - M - L - XL - XXL",link:"https://wa.me/p/25419951541038039/5491176277337",struck:29590,offer:27970},
+    {img:"imagenes/remeraunisexoversizeblackted.png",name:"Oversize Black Ted",talles:"XXS - XS - S - M - L - XL - XXL",link:"https://wa.me/p/25569978555998026/5491176277337",struck:29590,offer:27970},
+    {img:"imagenes/remeraunisexoversizewhiteabano.png",name:"Oversize White Abano",talles:"XXS - XS - S - M - L - XL - XXL",link:"https://wa.me/p/26097506293206293/5491176277337",struck:27790,offer:26570},
+    {img:"imagenes/remeraunisexoversizewhitealegria.png",name:"Oversize White Alegria",talles:"XXS - XS - S - M - L - XL - XXL",link:"https://wa.me/p/25680468984946976/5491176277337",struck:27790,offer:26570},
+    {img:"imagenes/remeraunisexoversizewhitearcangel.png",name:"Oversize White Arcangel",talles:"XXS - XS - S - M - L - XL - XXL",link:"https://wa.me/p/25577357998614857/5491176277337",struck:27790,offer:26570},
+    {img:"imagenes/remeraunisexoversizewhitearcoiris.png",name:"Oversize White Arcoiris",talles:"XXS - XS - S - M - L - XL - XXL",link:"https://wa.me/p/26267256186191420/5491176277337",struck:27790,offer:26570},
+    {img:"imagenes/remeraunisexoversizewhitecabra.png",name:"Oversize White Cabra",talles:"XXS - XS - S - M - L - XL - XXL",link:"https://wa.me/p/33331359679845510/5491176277337",struck:27790,offer:26570},
+    {img:"imagenes/remeraunisexoversizewhitediego.png",name:"Oversize White Diego",talles:"XXS - XS - S - M - L - XL - XXL",link:"https://wa.me/p/26741092965481314/5491176277337",struck:27790,offer:26570},
+    {img:"imagenes/remeraunisexoversizewhiteemojis.png",name:"Oversize White Emojis",talles:"XXS - XS - S - M - L - XL - XXL",link:"https://wa.me/p/33701955469420286/5491176277337",struck:27790,offer:26570},
+    {img:"imagenes/remeraunisexoversizewhitejesus.png",name:"Oversize White Jesus",talles:"XXS - XS - S - M - L - XL - XXL",link:"https://wa.me/p/33701955469420286/5491176277337",struck:27790,offer:26570},
+    {img:"imagenes/remeraunisexoversizewhitelion.png",name:"Oversize White Lion",talles:"XXS - XS - S - M - L - XL - XXL",link:"https://wa.me/p/25463392963342868/5491176277337",struck:27790,offer:26570},
+    {img:"imagenes/remeraunisexoversizewhitemickeypink.png",name:"Oversize White Mickey Pink",talles:"XXS - XS - S - M - L - XL - XXL",link:"https://wa.me/p/26110395831919333/5491176277337",struck:27790,offer:26570},
+    {img:"imagenes/remeraunisexoversizewhiteoriginal.png",name:"Oversize White Original",talles:"XXS - XS - S - M - L - XL - XXL",link:"https://wa.me/p/34092434517014296/5491176277337",struck:27190,offer:25770},
+    {img:"imagenes/remeraunisexoversizewhiteprimavera.png",name:"Oversize White Primavera",talles:"XXS - XS - S - M - L - XL - XXL",link:"https://wa.me/p/25529760243371938/5491176277337",struck:27790,offer:26570},
+    {img:"imagenes/remeraunisexoversizewhiteskullpink.png",name:"Oversize White Skull Pink",talles:"XXS - XS - S - M - L - XL - XXL",link:"https://wa.me/p/25968163682819570/5491176277337",struck:27790,offer:26570},
+    {img:"imagenes/remeraunisexoversizewhiteted.png",name:"Oversize White Ted",talles:"XXS - XS - S - M - L - XL - XXL",link:"https://wa.me/p/25593770616911500/5491176277337",struck:27790,offer:26570}
+  ],
+  "stone-wash": [
+    {img:"imagenes/remeraoversizestonewashblackbaka.png",name:"Oversize StoneWash Baka",talles:"XXS - XS - S - M - L - XL - XXL",link:"https://wa.me/p/25898014569815451/5491176277337",struck:29890,offer:28270},
+    {img:"imagenes/remeraoversizestonewashblackcabra.png",name:"Oversize StoneWash Cabra",talles:"XXS - XS - S - M - L - XL - XXL",link:"https://wa.me/p/25473449992350198/5491176277337",struck:29890,offer:28270},
+    {img:"imagenes/remeraoversizestonewashblackgorilla.png",name:"Oversize StoneWash Gorilla",talles:"XXS - XS - S - M - L - XL - XXL",link:"https://wa.me/p/26076824211955766/5491176277337",struck:29890,offer:28270},
+    {img:"imagenes/remeraoversizestonewashblackgorillafrente.png",name:"Oversize StoneWash Gorilla Frente",talles:"XXS - XS - S - M - L - XL - XXL",link:"https://wa.me/p/24950976647910973/5491176277337",struck:29890,offer:28270},
+    {img:"imagenes/remeraoversizestonewashblackoriginal.png",name:"Oversize StoneWash Original",talles:"XXS - XS - S - M - L - XL - XXL",link:"https://wa.me/p/26162012073384640/5491176277337",struck:28790,offer:27970},
+    {img:"imagenes/remeraoversizestonewashblackted.png",name:"Oversize StoneWash Ted",talles:"XXS - XS - S - M - L - XL - XXL",link:"https://wa.me/p/25748594738129139/5491176277337",struck:29890,offer:28270},
+    {img:"imagenes/remeraoversizestonewashblacktedbaño.png",name:"Oversize StoneWash TedBaño",talles:"XXS - XS - S - M - L - XL - XXL",link:"https://wa.me/p/26062659480018571/5491176277337",struck:29890,offer:28270},
+    {img:"imagenes/remeraoversizestonewashblacktedblond.png",name:"Oversize StoneWash TedBlond",talles:"XXS - XS - S - M - L - XL - XXL",link:"https://wa.me/p/25657804167220226/5491176277337",struck:29890,offer:28270},
+    {img:"imagenes/remeraoversizestonewashblacktedduff.png",name:"Oversize StoneWash Ted Duff",talles:"XXS - XS - S - M - L - XL - XXL",link:"https://wa.me/p/26156852480567515/5491176277337",struck:29890,offer:28270},
+    {img:"imagenes/remeraoversizestonewashblacktedgafas.png",name:"Oversize StoneWash Bear Gafas",talles:"XXS - XS - S - M - L - XL - XXL",link:"https://wa.me/p/25364170976616178/5491176277337",struck:29890,offer:28270},
+    {img:"imagenes/remeraoversizestonewashwhitebakaout.png",name:"Oversize White Bakaout",talles:"XXS - XS - S - M - L - XL - XXL",link:"https://wa.me/p/25664362656557149/5491176277337",struck:27190,offer:26570},
+    {img:"imagenes/remeraoversizestonewashwhitebaño.png",name:"Oversize White Baño",talles:"XXS - XS - S - M - L - XL - XXL",link:"https://wa.me/p/25518272967822235/5491176277337",struck:27190,offer:26570},
+    {img:"imagenes/remeraoversizestonewashwhitebunny.png",name:"Oversize White Bunny",talles:"XXS - XS - S - M - L - XL - XXL",link:"https://wa.me/p/26253466987592453/5491176277337",struck:27190,offer:26570},
+    {img:"imagenes/remeraoversizestonewashwhitecaritas.png",name:"Oversize White Caritas",talles:"XXS - XS - S - M - L - XL - XXL",link:"https://wa.me/p/33954088194182210/5491176277337",struck:27190,offer:26570},
+    {img:"imagenes/remeraoversizestonewashwhitechillout.png",name:"Oversize White Chill Out",talles:"XXS - XS - S - M - L - XL - XXL",link:"https://wa.me/p/26214349734839638/5491176277337",struck:27190,offer:26570},
+    {img:"imagenes/remeraoversizestonewashwhitecouraje.png",name:"Oversize White Coraje",talles:"XXS - XS - S - M - L - XL - XXL",link:"https://wa.me/p/26183641257908895/5491176277337",struck:27190,offer:26570},
+    {img:"imagenes/remeraoversizestonewashwhitepanter.png",name:"Oversize White Panter",talles:"XXS - XS - S - M - L - XL - XXL",link:"https://wa.me/p/25902282599460932/5491176277337",struck:27190,offer:26570},
+    {img:"imagenes/remeraoversizestonewashwhitepanterpinks.png",name:"Oversize White Panter Pink",talles:"XXS - XS - S - M - L - XL - XXL",link:"https://wa.me/p/25743659901968908/5491176277337",struck:27190,offer:26570},
+    {img:"imagenes/remeraoversizestonewashwhitepanteryellow.png",name:"Oversize White Panter Yellow",talles:"XXS - XS - S - M - L - XL - XXL",link:"https://wa.me/p/33492410290374005/5491176277337",struck:27190,offer:26570},
+    {img:"imagenes/remeraoversizestonewashwhitepinkbear.png",name:"Oversize White Pink Bear",talles:"XXS - XS - S - M - L - XL - XXL",link:"https://wa.me/p/26217164524542179/5491176277337",struck:27190,offer:26570}
+  ],
+  crop: [
+    {img:"imagenes/portadaremeracropbrownglow.png",name:"Crop Brown Glow",talles:"S - M - L - XL - XXL",link:"https://wa.me/p/33720006224280448/5491176277337",struck:25490,offer:24270},
+    {img:"imagenes/portadaremeracropgraybitch.png",name:"Crop Gray Bitch",talles:"S - M - L - XL - XXL",link:"https://wa.me/p/26733859616204038/5491176277337",struck:25390,offer:24170},
+    {img:"imagenes/portadaremeracroplightmauveheart.png",name:"Crop Light Mauve Heart",talles:"S - M - L - XL - XXL",link:"https://wa.me/p/34660546396878020/5491176277337",struck:25490,offer:24270},
+    {img:"imagenes/portadaremeracropmauveoriginal.png",name:"Crop Mauve Original",talles:"S - M - L - XL - XXL",link:"https://wa.me/p/33769817722663923/5491176277337",struck:25490,offer:24270},
+    {img:"imagenes/remeracropbrownbitch.png",name:"Crop Brown Bitch",talles:"S - M - L - XL - XXL",link:"https://wa.me/p/26178650935059944/5491176277337",struck:25490,offer:24270},
+    {img:"imagenes/remeracropbrowncherrylips.png",name:"Crop Brown Cherry Lips",talles:"S - M - L - XL - XXL",link:"https://wa.me/p/25642133232112294/5491176277337",struck:25490,offer:24270},
+    {img:"imagenes/remeracropbrownlovecat.png",name:"Crop Brown LoveCat",talles:"S - M - L - XL - XXL",link:"https://wa.me/p/25544800638464476/5491176277337",struck:25490,offer:24270},
+    {img:"imagenes/remeracropbrownoriginal.png",name:"Crop Brown Original",talles:"S - M - L - XL - XXL",link:"https://wa.me/p/25554010930936930/5491176277337",struck:25490,offer:24270},
+    {img:"imagenes/remeracropgraymedusa.png",name:"Crop Gray Medusa",talles:"S - M - L - XL - XXL",link:"https://wa.me/p/33656479770664094/5491176277337",struck:25390,offer:24170},
+    {img:"imagenes/remeracropgraymusic.png",name:"Crop Gray Music",talles:"S - M - L - XL - XXL",link:"https://wa.me/p/26373588612226603/5491176277337",struck:25390,offer:24170},
+    {img:"imagenes/remeracropgrayonmusic.png",name:"Crop Gray OnMusic",talles:"S - M - L - XL - XXL",link:"https://wa.me/p/33568086969472530/5491176277337",struck:25390,offer:24170},
+    {img:"imagenes/remeracropgrayoriginal.png",name:"Crop Gray Original",talles:"S - M - L - XL - XXL",link:"https://wa.me/p/27506772325614909/5491176277337",struck:25390,offer:24170},
+    {img:"imagenes/remeracroplightmauvecopa.png",name:"Crop Light Mauve Copa",talles:"S - M - L - XL - XXL",link:"https://wa.me/p/25905483385729711/5491176277337",struck:25490,offer:24270},
+    {img:"imagenes/remeracroplightmauvenewyear.png",name:"Crop Light Mauve New Year",talles:"S - M - L - XL - XXL",link:"https://wa.me/p/25826203403679930/5491176277337",struck:25490,offer:24270},
+    {img:"imagenes/remeracroplightmauveoriginal.png",name:"Crop Light Mauve Original",talles:"S - M - L - XL - XXL",link:"https://wa.me/p/33920463167567501/5491176277337",struck:25490,offer:24270},
+    {img:"imagenes/remeracroplightmauvetwoeyes.png",name:"Crop Light Mauve Two Eyes",talles:"S - M - L - XL - XXL",link:"https://wa.me/p/25915893988027794/5491176277337",struck:25490,offer:24270},
+    {img:"imagenes/remeracropmauvecrema.png",name:"Crop Mauve Crema",talles:"S - M - L - XL - XXL",link:"https://wa.me/p/25474840395552261/5491176277337",struck:25490,offer:24270},
+    {img:"imagenes/remeracropmauvelips.png",name:"Crop Mauve Lips",talles:"S - M - L - XL - XXL",link:"https://wa.me/p/25637880105822648/5491176277337",struck:25490,offer:24270},
+    {img:"imagenes/remeracropmauvelipsart.png",name:"Crop Mauve Lips Art",talles:"S - M - L - XL - XXL",link:"https://wa.me/p/33366418513006286/5491176277337",struck:25490,offer:24270},
+    {img:"imagenes/remeracropmauvewatermelonlips.png",name:"Crop Mauve Water Melon Lips",talles:"S - M - L - XL - XXL",link:"https://wa.me/p/34864023363196838/5491176277337",struck:25490,offer:24270}
+  ],
+  morley: [
+    {img:"imagenes/portadamusculosademorleygraybitch.png",name:"Morley Gray Bitch",talles:"S - M - L - XL - XXL",link:"https://wa.me/p/26142934048646687/5491176277337",struck:24190,offer:23270},
+    {img:"imagenes/portadamusculosademorleygrayheartpink.png",name:"Morley Gray Heart Pink",talles:"S - M - L - XL - XXL",link:"https://wa.me/p/26283899871196248/5491176277337",struck:24190,offer:23270},
+    {img:"imagenes/portadamusculosademorleygrayoriginal.png",name:"Morley Gray Original",talles:"S - M - L - XL - XXL",link:"https://wa.me/p/25877706528525747/5491176277337",struck:24190,offer:23270},
+    {img:"imagenes/portadamusculosademorleygraypink.png",name:"Morley Gray Pink",talles:"S - M - L - XL - XXL",link:"https://wa.me/p/25947338051582136/5491176277337",struck:24190,offer:23270},
+    {img:"imagenes/musculosademorleygraybearpink.png",name:"Morley Gray Bear Pink",talles:"S - M - L - XL - XXL",link:"https://wa.me/p/26681614074761360/5491176277337",struck:24190,offer:23270},
+    {img:"imagenes/musculosademorleygraychill.png",name:"Morley Gray Chill",talles:"S - M - L - XL - XXL",link:"https://wa.me/p/25924566910508650/5491176277337",struck:24190,offer:23270},
+    {img:"imagenes/musculosademorleygrayglow.png",name:"Morley Gray Glow",talles:"S - M - L - XL - XXL",link:"https://wa.me/p/25291222797227304/5491176277337",struck:24190,offer:23270},
+    {img:"imagenes/musculosademorleygraymickeypink.png",name:"Morley Gray Mickey Pink",talles:"S - M - L - XL - XXL",link:"https://wa.me/p/25924988427131109/5491176277337",struck:24190,offer:23270}
+  ],
+  hodie: [
+    {img:"imagenes/portadabuzohoddiestonewashunisexattitude.png",name:"Hoddie StoneWash Attitude",talles:"XS - S - M - L - XL - XXL",link:"https://wa.me/p/26286356050956139/5491176277337",struck:40890,offer:37840},
+    {img:"imagenes/portadabuzohoddiewhiteunisexnolimit.png",name:"Hoddie White NoLimit",talles:"XS - S - M - L - XL - XXL",link:"https://wa.me/p/25836823476005989/5491176277337",struck:37890,offer:34470},
+    {img:"imagenes/portadabuzohoddiestonewashunisexoriginal.png",name:"Hoddie StoneWash Original",talles:"XS - S - M - L - XL - XXL",link:"https://wa.me/p/25643716271903833/5491176277337",struck:40290,offer:37140},
+    {img:"imagenes/portadabuzohoddiewhiteunisexpanterpink.png",name:"Hoddie White Panter Pink",talles:"XS - S - M - L - XL - XXL",link:"https://wa.me/p/25941861815443466/5491176277337",struck:37890,offer:34470},
+    {img:"imagenes/buzohoddieblackunisexbadboy.png",name:"Hoddie Black BadBoy",talles:"XS - S - M - L - XL - XXL",link:"https://wa.me/p/25615705721432330/5491176277337",struck:38190,offer:35870},
+    {img:"imagenes/buzohoddieblackunisexbearpink.png",name:"Hoddie Black BearPink",talles:"XS - S - M - L - XL - XXL",link:"https://wa.me/p/26569139256022601/5491176277337",struck:38190,offer:35870},
+    {img:"imagenes/buzohoddieblackunisexbearpinkmini.png",name:"Hoddie Black Bear Pink Mini",talles:"XS - S - M - L - XL - XXL",link:"https://wa.me/p/26131576116479691/5491176277337",struck:38190,offer:35870},
+    {img:"imagenes/buzohoddieblackunisexemojis.png",name:"Hoddie Black Emojis",talles:"XS - S - M - L - XL - XXL",link:"https://wa.me/p/24885928167747314/5491176277337",struck:38190,offer:35870},
+    {img:"imagenes/buzohoddieblackunisexnolimit.png",name:"Hoddie Black NoLimit",talles:"XS - S - M - L - XL - XXL",link:"https://wa.me/p/26379723881635448/5491176277337",struck:38190,offer:35870},
+    {img:"imagenes/buzohoddieblackunisexonmusic.png",name:"Hoddie Black OnMusic",talles:"XS - S - M - L - XL - XXL",link:"https://wa.me/p/25522939957407153/5491176277337",struck:38190,offer:35870},
+    {img:"imagenes/buzohoddieblackunisexoriginal.png",name:"Hoddie Black Original",talles:"XS - S - M - L - XL - XXL",link:"https://wa.me/p/25775958765386435/5491176277337",struck:38190,offer:35870},
+    {img:"imagenes/buzohoddieblackunisexpanter.png",name:"Hoddie Black Panter",talles:"XS - S - M - L - XL - XXL",link:"https://wa.me/p/25569098169399207/5491176277337",struck:38190,offer:35870},
+    {img:"imagenes/buzohoddieblackunisexprimavera.png",name:"Hoddie Black Primavera",talles:"XS - S - M - L - XL - XXL",link:"https://wa.me/p/25643633338642284/5491176277337",struck:38190,offer:35870},
+    {img:"imagenes/buzohoddiestonewashunisexbaka.png",name:"Hoddie StoneWash Baka",talles:"XS - S - M - L - XL - XXL",link:"https://wa.me/p/27021186727481877/5491176277337",struck:40890,offer:37840},
+    {img:"imagenes/buzohoddiestonewashunisexglow.png",name:"Hoddie StoneWash Glow",talles:"XS - S - M - L - XL - XXL",link:"https://wa.me/p/33389602600682926/5491176277337",struck:40890,offer:37840},
+    {img:"imagenes/buzohoddiestonewashunisexmusk.png",name:"Hoddie StoneWash Musk",talles:"XS - S - M - L - XL - XXL",link:"https://wa.me/p/25837766889243850/5491176277337",struck:40890,offer:37840},
+    {img:"imagenes/buzohoddiestonewashunisexskullpink.png",name:"Hoddie StoneWash Skullpink",talles:"XS - S - M - L - XL - XXL",link:"https://wa.me/p/25983770367901731/5491176277337",struck:40890,offer:37840},
+    {img:"imagenes/buzohoddiestonewashunisexsurreal.png",name:"Hoddie StoneWash Surreal",talles:"XS - S - M - L - XL - XXL",link:"https://wa.me/p/25759402497002758/5491176277337",struck:40890,offer:37840},
+    {img:"imagenes/buzohoddiewhiteunisexbaka.png",name:"Hoddie White Baka",talles:"XS - S - M - L - XL - XXL",link:"https://wa.me/p/25797235029887573/5491176277337",struck:37890,offer:34470},
+    {img:"imagenes/buzohoddiewhiteunisexbearpink.png",name:"Hoddie White Bear Pink",talles:"XS - S - M - L - XL - XXL",link:"https://wa.me/p/25926557356965324/5491176277337",struck:37890,offer:34470}
+  ],
+  "cuello-redondo": [
+    {img:"imagenes/portadabuzocuelloredondostonewashoversizebearpink.png",name:"Buzo Cuello Redondo Stonewash Bear Pink",talles:"XS - S - M - L - XL - XXL",link:"https://wa.me/p/26317155347892664/5491176277337",struck:40890,offer:37840},
+    {img:"imagenes/portadabuzocuelloredondowhiteoversizebearpink.png",name:"Buzo Cuello Redondo White Bear Pink",talles:"XS - S - M - L - XL - XXL",link:"https://wa.me/p/25598759773142974/5491176277337",struck:37890,offer:34470},
+    {img:"imagenes/portadabuzocuelloredondostonewashoversizemanoriginal.png",name:"Buzo Cuello Redondo Stonewash Original",talles:"XS - S - M - L - XL - XXL",link:"https://wa.me/p/33628990613383250/5491176277337",struck:40290,offer:37140},
+    {img:"imagenes/portadabuzocuelloredondowhiteoversizechill.png",name:"Buzo Cuello Redondo White Chill",talles:"XS - S - M - L - XL - XXL",link:"https://wa.me/p/25750056304637086/5491176277337",struck:37890,offer:34470},
+    {img:"imagenes/buzocuelloredondoblackoversizebaka.png",name:"Buzo Cuello Redondo Black Baka",talles:"XS - S - M - L - XL - XXL",link:"https://wa.me/p/26017073814555062/5491176277337",struck:38190,offer:35870},
+    {img:"imagenes/buzocuelloredondoblackoversizebearganster.png",name:"Buzo Cuello Redondo Black Bear Ganster",talles:"XS - S - M - L - XL - XXL",link:"https://wa.me/p/25974995638762616/5491176277337",struck:38190,offer:35870},
+    {img:"imagenes/buzocuelloredondoblackoversizegum.png",name:"Buzo Cuello Redondo Black Gum",talles:"XS - S - M - L - XL - XXL",link:"https://wa.me/p/25813719911581085/5491176277337",struck:38190,offer:35870},
+    {img:"imagenes/buzocuelloredondoblackoversizeonmusic.png",name:"Buzo Cuello Redondo Black OnMusic",talles:"XS - S - M - L - XL - XXL",link:"https://wa.me/p/25791648027151437/5491176277337",struck:38190,offer:35870},
+    {img:"imagenes/buzocuelloredondostonewashoversizeattitudeoscuro.png",name:"Buzo Cuello Redondo Stonewash Attitude Oscuro",talles:"XS - S - M - L - XL - XXL",link:"https://wa.me/p/26693027536962149/5491176277337",struck:40890,offer:37840},
+    {img:"imagenes/buzocuelloredondostonewashoversizeattitudewhit.png",name:"Buzo Cuello Redondo Stonewash Attitude Claro",talles:"XS - S - M - L - XL - XXL",link:"https://wa.me/p/25689588680663318/5491176277337",struck:40890,offer:37840},
+    {img:"imagenes/buzocuelloredondostonewashoversizebearpinkback.png",name:"Buzo Cuello Redondo Stonewash Bear Pink Back",talles:"XS - S - M - L - XL - XXL",link:"https://wa.me/p/25492580350443158/5491176277337",struck:40890,offer:37840},
+    {img:"imagenes/buzocuelloredondostonewashoversizelion.png",name:"Buzo Cuello Redondo Stonewash Lion",talles:"XS - S - M - L - XL - XXL",link:"https://wa.me/p/25628960570102075/5491176277337",struck:40890,offer:37840},
+    {img:"imagenes/buzocuelloredondostonewashoversizeonmusic.png",name:"Buzo Cuello Redondo Stonewash OnMusic",talles:"XS - S - M - L - XL - XXL",link:"https://wa.me/p/24673091365700904/5491176277337",struck:40890,offer:37840},
+    {img:"imagenes/buzocuelloredondostonewashoversizeoriginal.png",name:"Buzo Cuello Redondo Stonewash Original",talles:"XS - S - M - L - XL - XXL",link:"https://wa.me/p/25960304076934723/5491176277337",struck:40290,offer:37140},
+    {img:"imagenes/buzocuelloredondowhiteoversizeskullpink.png",name:"Buzo Cuello Redondo White Skull Pink",talles:"XS - S - M - L - XL - XXL",link:"https://wa.me/p/25952603357710734/5491176277337",struck:37890,offer:34470},
+    {img:"imagenes/buzocuelloredondowhiteoversizeskullpinkback.png",name:"Buzo Cuello Redondo White Pink Black",talles:"XS - S - M - L - XL - XXL",link:"https://wa.me/p/25939264409040631/5491176277337",struck:37890,offer:34470}
+  ],
+  infantiles: [
+    {img:"imagenes/remeraamarillaunisexbackattitude.png",name:"Remera Amarilla Unisex Back Attitude",talles:"4 - 6 - 8 - 10 - 12 - 14",link:"https://wa.me/p/25923912053940697/5491176277337",struck:25290,offer:24170},
+    {img:"imagenes/remeracelesteunisexstich.png",name:"Remera Celeste Unisex Stich",talles:"4 - 6 - 8 - 10 - 12 - 14",link:"https://wa.me/p/25705317032453067/5491176277337",struck:25290,offer:24170},
+    {img:"imagenes/remerarosaunisexpink.png",name:"Remera Rosa Unisex Pink",talles:"4 - 6 - 8 - 10 - 12 - 14",link:"https://wa.me/p/26183447314573085/5491176277337",struck:25290,offer:24170},
+    {img:"imagenes/remeragrisunisexoriginal.png",name:"Remera Gris Unisex Original",talles:"4 - 6 - 8 - 10 - 12 - 14",link:"https://wa.me/p/33404038179243568/5491176277337",struck:25290,offer:24170},
+    {img:"imagenes/remeraamarillaunisexattitude.png",name:"Remera Amarilla Unisex Attitude",talles:"4 - 6 - 8 - 10 - 12 - 14",link:"https://wa.me/p/25390574653976050/5491176277337",struck:25290,offer:24170},
+    {img:"imagenes/remeraamarillaunisexcoraje.png",name:"Remera Amarilla Unisex Coraje",talles:"4 - 6 - 8 - 10 - 12 - 14",link:"https://wa.me/p/26113175704973304/5491176277337",struck:25290,offer:24170},
+    {img:"imagenes/remeraamarillaunisexoriginal.png",name:"Remera Amarilla Unisex Original",talles:"4 - 6 - 8 - 10 - 12 - 14",link:"https://wa.me/p/25656668227287847/5491176277337",struck:25290,offer:24170},
+    {img:"imagenes/remeracelesteunisexdiez.png",name:"Remera Celeste Unisex Diez",talles:"4 - 6 - 8 - 10 - 12 - 14",link:"https://wa.me/p/25743097385345125/5491176277337",struck:25290,offer:24170},
+    {img:"imagenes/remeracelesteunisexmusic.png",name:"Remera Celeste Unisex Music",talles:"4 - 6 - 8 - 10 - 12 - 14",link:"https://wa.me/p/27155117100745195/5491176277337",struck:25290,offer:24170},
+    {img:"imagenes/remeracelesteunisexoriginal.png",name:"Remera Celeste Unisex Original",talles:"4 - 6 - 8 - 10 - 12 - 14",link:"https://wa.me/p/26027818846814068/5491176277337",struck:25290,offer:24170},
+    {img:"imagenes/remeragrisunisexalegria.png",name:"Remera Gris Unisex Alegria",talles:"4 - 6 - 8 - 10 - 12 - 14",link:"https://wa.me/p/25530849073283451/5491176277337",struck:25290,offer:24170},
+    {img:"imagenes/remeragrisunisexcoraje.png",name:"Remera Gris Unisex Coraje",talles:"4 - 6 - 8 - 10 - 12 - 14",link:"https://wa.me/p/26744668495121738/5491176277337",struck:25290,offer:24170},
+    {img:"imagenes/remeragrisunisexcowardlydog.png",name:"Remera Gris Unisex Cowardly Dog",talles:"4 - 6 - 8 - 10 - 12 - 14",link:"https://wa.me/p/25453616857644551/5491176277337",struck:25290,offer:24170},
+    {img:"imagenes/remerarosaunisexalegria.png",name:"Remera Rosa Unisex Alegria",talles:"4 - 6 - 8 - 10 - 12 - 14",link:"https://wa.me/p/25720563110941849/5491176277337",struck:25290,offer:24170},
+    {img:"imagenes/remerarosaunisexoriginal.png",name:"Remera Rosa Unisex Original",talles:"4 - 6 - 8 - 10 - 12 - 14",link:"https://wa.me/p/26386028270992704/5491176277337",struck:25290,offer:24170},
+    {img:"imagenes/remerarosaunisexpatricio.png",name:"Remera Rosa Unisex Patricio",talles:"4 - 6 - 8 - 10 - 12 - 14",link:"https://wa.me/p/25739063545779581/5491176277337",struck:25290,offer:24170}
+  ]
+};
+
+document.querySelectorAll('.ver-mas').forEach(btn => {
+  btn.addEventListener('click', () => {
+    btn.style.display = 'none';
+    btn.nextElementSibling.style.display = 'grid';
+  });
+});
+
+document.querySelectorAll('.product img').forEach(img => {
+  img.addEventListener('click', () => {
+    currentSection = img.dataset.sec;
+    currentIndex = parseInt(img.dataset.idx);
+    openModal();
+  });
+});
+
+function openModal() {
+  const prod = products[currentSection]?.[currentIndex];
+  if (!prod) {
+    alert("Producto no encontrado. Revisa data-sec y data-idx");
+    return;
+  }
+  document.getElementById('modalImg').src = prod.img;
+  document.getElementById('price').innerHTML = `
+    <span class="struck">$${prod.struck.toLocaleString('es-AR')}</span>
+    <span class="offer">$${prod.offer.toLocaleString('es-AR')}</span><br>
+    ${prod.name}<br>
+    ${prod.talles}
+  `;
+  document.getElementById('wa').href = prod.link;
+  document.getElementById('modal').style.display = 'flex';
+}
+
+function change(dir) {
+  const arr = products[currentSection];
+  if (!arr || arr.length === 0) return;
+  currentIndex = (currentIndex + dir + arr.length) % arr.length;
+  openModal();
+}
+
+document.getElementById('modal').addEventListener('click', e => {
+  if (e.target.id === 'modal') document.getElementById('modal').style.display = 'none';
+});
+</script>
+
+</body>
+</html>
