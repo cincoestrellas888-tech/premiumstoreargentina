@@ -4,14 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>PremiumStore</title>
-
   <style>
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
-
     body {
       font-family: 'Segoe UI', Arial, sans-serif;
       background: url('fondoweb.png') no-repeat center center fixed;
@@ -20,7 +18,6 @@
       min-height: 100vh;
       overflow-x: hidden;
     }
-
     .container {
       max-width: 1300px;
       margin: 0 auto;
@@ -28,7 +25,6 @@
       background: rgba(0,0,0,0.68);
       min-height: 100vh;
     }
-
     header {
       background: #000;
       padding: 20px;
@@ -37,13 +33,11 @@
       top: 0;
       z-index: 100;
     }
-
     h1 {
       font-size: 2.8rem;
       letter-spacing: 2px;
       margin: 0;
     }
-
     video {
       width: 100%;
       max-width: 900px;
@@ -51,9 +45,7 @@
       margin: 30px auto;
       border-radius: 12px;
       border: 3px solid #111;
-      object-fit: cover;
     }
-
     .intro {
       max-width: 900px;
       margin: 0 auto 50px;
@@ -61,31 +53,33 @@
       line-height: 1.6;
       text-align: center;
     }
-
     section {
       margin: 60px 0;
     }
-
     h2 {
       font-size: 1.9rem;
       text-align: center;
       margin-bottom: 8px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
-
     h3 {
       font-size: 1.1rem;
       color: #ccc;
       text-align: center;
       margin-bottom: 30px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
-
     .gallery {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(4, 1fr); /* TODOS en 4 columnas */
       gap: 10px;
       margin: 30px 0;
+      padding: 0 5px;
     }
-
     .product {
       cursor: pointer;
       border: 3px solid #000;
@@ -94,19 +88,16 @@
       background: #111;
       transition: all 0.25s;
     }
-
     .product:hover {
       transform: scale(1.03);
       box-shadow: 0 0 30px rgba(255,255,255,0.15);
     }
-
     .product img {
       width: 100%;
       aspect-ratio: 0.707 / 1;
       object-fit: contain;
       display: block;
     }
-
     .ver-mas {
       display: block;
       width: 180px;
@@ -120,12 +111,10 @@
       cursor: pointer;
       animation: pulse 2.5s infinite;
     }
-
     @keyframes pulse {
       0%, 100% { opacity: 1; }
       50% { opacity: 0.75; }
     }
-
     .modal {
       display: none;
       position: fixed;
@@ -136,7 +125,6 @@
       align-items: center;
       padding: 15px;
     }
-
     .modal-content {
       position: relative;
       width: 100%;
@@ -147,7 +135,6 @@
       padding: 20px 10px;
       box-shadow: 0 0 40px rgba(0,0,0,0.8);
     }
-
     .modal img {
       max-width: 100%;
       max-height: 55vh;
@@ -155,7 +142,6 @@
       border-radius: 12px;
       border: 2px solid #333;
     }
-
     .prev, .next {
       position: absolute;
       top: 50%;
@@ -172,10 +158,8 @@
       cursor: pointer;
       z-index: 10;
     }
-
     .prev { left: 10px; }
     .next { right: 10px; }
-
     .close {
       position: absolute;
       top: 10px;
@@ -191,25 +175,21 @@
       text-align: center;
       z-index: 10;
     }
-
     .price {
       font-size: 1.3rem;
       line-height: 1.4;
       margin: 10px 0 15px;
     }
-
     .struck {
       text-decoration: line-through;
       color: #aaa;
       margin-right: 12px;
       font-size: 1.15rem;
     }
-
     .offer {
       font-weight: bold;
       font-size: 1.4rem;
     }
-
     .wa-btn {
       display: block;
       width: 100%;
@@ -226,33 +206,34 @@
       border: 1px solid #ccc;
       box-shadow: 0 0 12px rgba(255,255,255,0.3);
     }
-
     .wa-btn:hover {
       background: #f0f0f0;
       box-shadow: 0 0 20px rgba(255,255,255,0.5);
     }
-
     footer {
       background: #000;
       padding: 40px 20px;
       text-align: center;
       margin-top: 100px;
     }
-
     footer a {
       color: #ccc;
       text-decoration: none;
     }
-
     footer a:hover {
       color: white;
     }
 
+    /* Responsive - mantiene 4 columnas en móvil y ajusta espacios */
     @media (max-width: 768px) {
       h1 { font-size: 2.2rem; }
       h2 { font-size: 1.7rem; margin-bottom: 6px; }
       h3 { font-size: 1rem; margin-bottom: 25px; }
-      .gallery { gap: 8px; margin: 25px 0; }
+      .gallery {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 6px;
+        padding: 0 4px;
+      }
       .ver-mas { width: 160px; font-size: 0.95rem; }
       .modal img { max-height: 50vh; }
       .prev, .next { font-size: 40px; width: 40px; height: 40px; }
@@ -260,20 +241,25 @@
       .price { font-size: 1.15rem; }
       .wa-btn { font-size: 1rem; padding: 10px; max-width: 300px; }
     }
+
+    @media (max-width: 480px) {
+      .gallery {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 4px;
+        padding: 0 3px;
+      }
+    }
   </style>
 </head>
 <body>
-
 <div class="container">
   <header>
     <h1>PremiumStore</h1>
   </header>
-
   <video autoplay loop muted playsinline preload="metadata" poster="fondoweb.png">
     <source src="videocincoweb.mp4" type="video/mp4">
     Tu navegador no soporta video.
   </video>
-
   <div class="intro">
     <p>“Mirá nuestro catálogo y seleccioná la prenda que más te guste”</p>
     <p>Calidad premium y la mejor onda</p>
@@ -284,9 +270,7 @@
     <p>Despacho dentro de las 24 a 48 hs hábiles</p>
   </div>
 
-  <!-- ======================================================================
-       SECCIÓN REMERAS REGULAR FIT FEMENINAS
-  ====================================================================== -->
+  <!-- REMERAS REGULAR FIT FEMENINAS -->
   <section>
     <h2>REMERAS REGULAR FIT FEMENINAS</h2>
     <h3>todas las estampas son personalizables</h3>
@@ -294,10 +278,7 @@
       <div class="product"><img src="portadaremeraregularfitblackalegria.png" data-sec="regular" data-idx="0" loading="lazy"></div>
       <div class="product"><img src="portadaremeraregularfitblackted.png" data-sec="regular" data-idx="1" loading="lazy"></div>
       <div class="product"><img src="portadaremeraregularfitwhitebear.png" data-sec="regular" data-idx="2" loading="lazy"></div>
-      <div class="product"><img src="portadaremeraregularfitwhiteguum.png" data-sec="regular" data-idx="3" loading="lazy"></div>
-    </div> 
-    <button class="ver-mas">Ver más</button>
-    <div class="gallery" style="display:none">
+      <div class="product"><img src="portadaremeraregularfitwhitegum.png" data-sec="regular" data-idx="3" loading="lazy"></div>
       <div class="product"><img src="remeraregularfitblackcruz.png" data-sec="regular" data-idx="4" loading="lazy"></div>
       <div class="product"><img src="remeraregularfitblackemojis.png" data-sec="regular" data-idx="5" loading="lazy"></div>
       <div class="product"><img src="remeraregularfitblackgrafiti.png" data-sec="regular" data-idx="6" loading="lazy"></div>
@@ -317,9 +298,7 @@
     </div>
   </section>
 
-  <!-- ======================================================================
-       SECCIÓN REMERAS CLASICAS (UNISEX)
-  ====================================================================== -->
+  <!-- REMERAS CLASICAS (UNISEX) -->
   <section>
     <h2>REMERAS CLASICAS (UNISEX)</h2>
     <h3>todas las estampas son personalizables</h3>
@@ -328,9 +307,6 @@
       <div class="product"><img src="portadaremeraclasicablackmusk.png" data-sec="clasicas" data-idx="1" loading="lazy"></div>
       <div class="product"><img src="portadaremeraclasicawhiteattitude.png" data-sec="clasicas" data-idx="2" loading="lazy"></div>
       <div class="product"><img src="portadaremeraclasicawhitebunny.png" data-sec="clasicas" data-idx="3" loading="lazy"></div>
-    </div>
-    <button class="ver-mas">Ver más</button>
-    <div class="gallery" style="display:none">
       <div class="product"><img src="remeraclasicablackalegria.png" data-sec="clasicas" data-idx="4" loading="lazy"></div>
       <div class="product"><img src="remeraclasicablackcabra.png" data-sec="clasicas" data-idx="5" loading="lazy"></div>
       <div class="product"><img src="remeraclasicablackcruz.png" data-sec="clasicas" data-idx="6" loading="lazy"></div>
@@ -350,9 +326,7 @@
     </div>
   </section>
 
-  <!-- ======================================================================
-       SECCIÓN REMERAS OVERSIZE (UNISEX)
-  ====================================================================== -->
+  <!-- REMERAS OVERSIZE (UNISEX) -->
   <section>
     <h2>REMERAS OVERSIZE (UNISEX)</h2>
     <h3>todas las estampas son personalizables</h3>
@@ -361,9 +335,6 @@
       <div class="product"><img src="portadaremeraunisexoversizeoriginal.png" data-sec="oversize" data-idx="1" loading="lazy"></div>
       <div class="product"><img src="portadaremeraunisexoversizeoriginalemojis.png" data-sec="oversize" data-idx="2" loading="lazy"></div>
       <div class="product"><img src="portadaremeraunisexoversizeskullpinkbadboy.png" data-sec="oversize" data-idx="3" loading="lazy"></div>
-    </div>
-    <button class="ver-mas">Ver más</button>
-    <div class="gallery" style="display:none">
       <div class="product"><img src="remeraunisexoversizeblackbadboy.png" data-sec="oversize" data-idx="4" loading="lazy"></div>
       <div class="product"><img src="remeraunisexoversizeblackcruz.png" data-sec="oversize" data-idx="5" loading="lazy"></div>
       <div class="product"><img src="remeraunisexoversizeblackcruzlarga.png" data-sec="oversize" data-idx="6" loading="lazy"></div>
@@ -395,9 +366,7 @@
     </div>
   </section>
 
-  <!-- ======================================================================
-       SECCIÓN REMERAS OVERSIZE STONE WASH (UNISEX)
-  ====================================================================== -->
+  <!-- REMERAS OVERSIZE STONE WASH (UNISEX) -->
   <section>
     <h2>REMERAS OVERSIZE STONE WASH (UNISEX)</h2>
     <h3>todas las estampas son personalizables</h3>
@@ -405,10 +374,7 @@
       <div class="product"><img src="portadaremeraoversizestonewashblackbeargafas.png" data-sec="stone-wash" data-idx="0" loading="lazy"></div>
       <div class="product"><img src="portadaremeraoversizestonewashblackbearpink.png" data-sec="stone-wash" data-idx="1" loading="lazy"></div>
       <div class="product"><img src="portadaremeraoversizestonewashwhitechillbear.png" data-sec="stone-wash" data-idx="2" loading="lazy"></div>
-      <div class="product"><img src="poortadaremeraoversizestonewashwhitebearpink.png" data-sec="stone-wash" data-idx="3" loading="lazy"></div>
-    </div>
-    <button class="ver-mas">Ver más</button>
-    <div class="gallery" style="display:none">
+      <div class="product"><img src="portadaremeraoversizestonewashwhitebearpink.png" data-sec="stone-wash" data-idx="3" loading="lazy"></div>
       <div class="product"><img src="remeraoversizestonewashblackbaka.png" data-sec="stone-wash" data-idx="4" loading="lazy"></div>
       <div class="product"><img src="remeraoversizestonewashblackcabra.png" data-sec="stone-wash" data-idx="5" loading="lazy"></div>
       <div class="product"><img src="remeraoversizestonewashblackgorilla.png" data-sec="stone-wash" data-idx="6" loading="lazy"></div>
@@ -432,9 +398,7 @@
     </div>
   </section>
 
-  <!-- ======================================================================
-       SECCIÓN REMERAS CROP FEMENINAS
-  ====================================================================== -->
+  <!-- REMERAS CROP FEMENINAS -->
   <section>
     <h2>REMERAS CROP FEMENINAS</h2>
     <h3>todas las estampas son personalizables</h3>
@@ -443,9 +407,6 @@
       <div class="product"><img src="portadaremeracropgraybitch.png" data-sec="crop" data-idx="1" loading="lazy"></div>
       <div class="product"><img src="portadaremeracroplightmauveheart.png" data-sec="crop" data-idx="2" loading="lazy"></div>
       <div class="product"><img src="portadaremeracropmauveoriginal.png" data-sec="crop" data-idx="3" loading="lazy"></div>
-    </div>
-    <button class="ver-mas">Ver más</button>
-    <div class="gallery" style="display:none">
       <div class="product"><img src="remeracropbrownbitch.png" data-sec="crop" data-idx="4" loading="lazy"></div>
       <div class="product"><img src="remeracropbrowncherrylips.png" data-sec="crop" data-idx="5" loading="lazy"></div>
       <div class="product"><img src="remeracropbrownlovecat.png" data-sec="crop" data-idx="6" loading="lazy"></div>
@@ -465,9 +426,7 @@
     </div>
   </section>
 
-  <!-- ======================================================================
-       SECCIÓN REMERAS MUSCULOSA DE MORLEY FEMENINAS
-  ====================================================================== -->
+  <!-- REMERAS MUSCULOSA DE MORLEY FEMENINAS -->
   <section>
     <h2>REMERAS MUSCULOSA DE MORLEY FEMENINAS</h2>
     <h3>todas las estampas son personalizables</h3>
@@ -476,9 +435,6 @@
       <div class="product"><img src="portadamusculosademorleygrayheartpink.png" data-sec="morley" data-idx="1" loading="lazy"></div>
       <div class="product"><img src="portadamusculosademorleygrayoriginal.png" data-sec="morley" data-idx="2" loading="lazy"></div>
       <div class="product"><img src="portadamusculosademorleygraypink.png" data-sec="morley" data-idx="3" loading="lazy"></div>
-    </div>
-    <button class="ver-mas">Ver más</button>
-    <div class="gallery" style="display:none">
       <div class="product"><img src="musculosademorleygraybearpink.png" data-sec="morley" data-idx="4" loading="lazy"></div>
       <div class="product"><img src="musculosademorleygraychill.png" data-sec="morley" data-idx="5" loading="lazy"></div>
       <div class="product"><img src="musculosademorleygrayglow.png" data-sec="morley" data-idx="6" loading="lazy"></div>
@@ -486,9 +442,7 @@
     </div>
   </section>
 
-  <!-- ======================================================================
-       SECCIÓN BUZOS HODIE UNISEX
-  ====================================================================== -->
+  <!-- BUZOS HODIE UNISEX -->
   <section>
     <h2>BUZOS HODIE UNISEX</h2>
     <h3>todas las estampas son personalizables</h3>
@@ -497,9 +451,6 @@
       <div class="product"><img src="portadabuzohoddiewhiteunisexnolimit.png" data-sec="hodie" data-idx="1" loading="lazy"></div>
       <div class="product"><img src="portadabuzohoddiestonewashunisexoriginal.png" data-sec="hodie" data-idx="2" loading="lazy"></div>
       <div class="product"><img src="portadabuzohoddiewhiteunisexpanterpink.png" data-sec="hodie" data-idx="3" loading="lazy"></div>
-    </div>
-    <button class="ver-mas">Ver más</button>
-    <div class="gallery" style="display:none">
       <div class="product"><img src="buzohoddieblackunisexbadboy.png" data-sec="hodie" data-idx="4" loading="lazy"></div>
       <div class="product"><img src="buzohoddieblackunisexbearpink.png" data-sec="hodie" data-idx="5" loading="lazy"></div>
       <div class="product"><img src="buzohoddieblackunisexbearpinkmini.png" data-sec="hodie" data-idx="6" loading="lazy"></div>
@@ -519,9 +470,7 @@
     </div>
   </section>
 
-  <!-- ======================================================================
-       SECCIÓN BUZOS CUELLO REDONDO
-  ====================================================================== -->
+  <!-- BUZOS CUELLO REDONDO -->
   <section>
     <h2>BUZOS CUELLO REDONDO</h2>
     <h3>todas las estampas son personalizables</h3>
@@ -530,9 +479,6 @@
       <div class="product"><img src="portadabuzocuelloredondowhiteoversizebearpink.png" data-sec="cuello-redondo" data-idx="1" loading="lazy"></div>
       <div class="product"><img src="portadabuzocuelloredondostonewashoversizemanoriginal.png" data-sec="cuello-redondo" data-idx="2" loading="lazy"></div>
       <div class="product"><img src="portadabuzocuelloredondowhiteoversizechill.png" data-sec="cuello-redondo" data-idx="3" loading="lazy"></div>
-    </div>
-    <button class="ver-mas">Ver más</button>
-    <div class="gallery" style="display:none">
       <div class="product"><img src="buzocuelloredondoblackoversizebaka.png" data-sec="cuello-redondo" data-idx="4" loading="lazy"></div>
       <div class="product"><img src="buzocuelloredondoblackoversizebearganster.png" data-sec="cuello-redondo" data-idx="5" loading="lazy"></div>
       <div class="product"><img src="buzocuelloredondoblackoversizegum.png" data-sec="cuello-redondo" data-idx="6" loading="lazy"></div>
@@ -548,9 +494,7 @@
     </div>
   </section>
 
-  <!-- ======================================================================
-       SECCIÓN REMERAS INFANTILES UNISEX
-  ====================================================================== -->
+  <!-- REMERAS INFANTILES UNISEX -->
   <section>
     <h2>REMERAS INFANTILES UNISEX</h2>
     <h3>todas las estampas son personalizables</h3>
@@ -559,9 +503,6 @@
       <div class="product"><img src="remeracelesteunisexstich.png" data-sec="infantiles" data-idx="1" loading="lazy"></div>
       <div class="product"><img src="remerarosaunisexpink.png" data-sec="infantiles" data-idx="2" loading="lazy"></div>
       <div class="product"><img src="remeragrisunisexoriginal.png" data-sec="infantiles" data-idx="3" loading="lazy"></div>
-    </div>
-    <button class="ver-mas">Ver más</button>
-    <div class="gallery" style="display:none">
       <div class="product"><img src="remeraamarillaunisexattitude.png" data-sec="infantiles" data-idx="4" loading="lazy"></div>
       <div class="product"><img src="remeraamarillaunisexcoraje.png" data-sec="infantiles" data-idx="5" loading="lazy"></div>
       <div class="product"><img src="remeraamarillaunisexoriginal.png" data-sec="infantiles" data-idx="6" loading="lazy"></div>
@@ -576,8 +517,7 @@
       <div class="product"><img src="remerarosaunisexpatricio.png" data-sec="infantiles" data-idx="15" loading="lazy"></div>
     </div>
   </section>
-
-</div> <!-- fin .container -->
+</div>
 
 <!-- MODAL -->
 <div id="modal" class="modal">
@@ -600,10 +540,6 @@
 </footer>
 
 <script>
-// ────────────────────────────────────────────────
-// JAVASCRIPT CORRECTO - NADA FUERA DE ESTE BLOQUE
-// ────────────────────────────────────────────────
-
 let currentSection = '';
 let currentIndex = 0;
 
@@ -653,10 +589,10 @@ const products = {
     {img:"remeraclasicawhiteskullsurreal.png",name:"Clasica White Skull Surreal",talles:"S - M - L - XL - XXL",link:"https://wa.me/p/25825567897105221/5491176277337",struck:27790,offer:24990}
   ],
   oversize: [
-    {img:"portadaremeraunisexoversizeemojisoriginal.png",name:"Combo Oversize White Emojis & Black Original",talles:"XXS - XS - S - M - L - XL - XXL",link:"https://wa.me/p/26248552814751423/5491176277337",struck:54560,offer:49970},
-    {img:"portadaremeraunisexoversizeoriginal.png",name:"Combo Oversize White Original & Black Original",talles:"XXS - XS - S - M - L - XL - XXL",link:"https://wa.me/p/33898719563075037/5491176277337",struck:52460,offer:48970},
+    {img:"portadaremeraunisexoversizeemojisoriginal.png",name:"Combo Oversize White Emojis & Black Original",talles:"XXS - XS - S - M - L - XL - XXL",link:"https://wa.me/p/26248552814751423/5491176277337",struck:27790,offer:26570},
+    {img:"portadaremeraunisexoversizeoriginal.png",name:"Combo Oversize White Original & Black Original",talles:"XXS - XS - S - M - L - XL - XXL",link:"https://wa.me/p/33898719563075037/5491176277337",struck:27790,offer:26570},
     {img:"portadaremeraunisexoversizeoriginalemojis.png",name:"Combo White Original & Black Emojis",talles:"XXS - XS - S - M - L - XL - XXL",link:"https://wa.me/p/26711793388421493/5491176277337",struck:27790,offer:26570},
-    {img:"portadaremeraunisexoversizeskullpinkbadboy.png",name:"Combo Oversize White Pink & Black BadBoy",talles:"XXS - XS - S - M - L - XL - XXL",link:"https://wa.me/p/26924934113761794/5491176277337",struck:49970,offer:54540},
+    {img:"portadaremeraunisexoversizeskullpinkbadboy.png",name:"Combo Oversize White Pink & Black BadBoy",talles:"XXS - XS - S - M - L - XL - XXL",link:"https://wa.me/p/26924934113761794/5491176277337",struck:27790,offer:26570},
     {img:"remeraunisexoversizeblackbadboy.png",name:"Oversize Black BadBoy",talles:"XXS - XS - S - M - L - XL - XXL",link:"https://wa.me/p/26027809163523116/5491176277337",struck:29590,offer:27970},
     {img:"remeraunisexoversizeblackcruz.png",name:"Oversize Black Cruz",talles:"XXS - XS - S - M - L - XL - XXL",link:"https://wa.me/p/25683161851343580/5491176277337",struck:29590,offer:27970},
     {img:"remeraunisexoversizeblackcruzlarga.png",name:"Oversize Black Cruz Larga",talles:"XXS - XS - S - M - L - XL - XXL",link:"https://wa.me/p/25831566163169132/5491176277337",struck:29590,offer:27970},
@@ -804,31 +740,26 @@ const products = {
   ]
 };
 
-// EVENTOS Y FUNCIONES DEL CARRUSEL Y MODAL
 document.addEventListener('click', function(e) {
   if (e.target.classList.contains('ver-mas')) {
     e.target.style.display = 'none';
     e.target.nextElementSibling.style.display = 'grid';
     return;
   }
-
   if (e.target.tagName === 'IMG' && e.target.dataset.sec) {
     currentSection = e.target.dataset.sec;
     currentIndex = parseInt(e.target.dataset.idx) || 0;
     openModal();
     return;
   }
-
   if (e.target.classList.contains('prev')) {
     change(-1);
     return;
   }
-
   if (e.target.classList.contains('next')) {
     change(1);
     return;
   }
-
   if (e.target.id === 'modal' || e.target.classList.contains('close')) {
     document.getElementById('modal').style.display = 'none';
   }
@@ -837,17 +768,14 @@ document.addEventListener('click', function(e) {
 function openModal() {
   const prod = products[currentSection]?.[currentIndex];
   if (!prod) return;
-
   document.getElementById('modalImg').src = prod.img;
   document.getElementById('modalImg').style.transform = 'scale(1)';
-
   document.getElementById('price').innerHTML = `
     <span class="struck">$${prod.struck.toLocaleString('es-AR')}</span>
     <span class="offer">$${prod.offer.toLocaleString('es-AR')}</span><br>
     ${prod.name}<br>
     ${prod.talles}
   `;
-
   document.getElementById('wa').href = prod.link;
   document.getElementById('modal').style.display = 'flex';
 }
@@ -858,16 +786,6 @@ function change(dir) {
   currentIndex = (currentIndex + dir + arr.length) % arr.length;
   openModal();
 }
-
-console.log("Sitio cargado correctamente – sin código visible");
 </script>
-
 </body>
 </html>
-
-
-
-
-
-
-
