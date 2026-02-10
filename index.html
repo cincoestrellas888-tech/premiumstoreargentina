@@ -5,11 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>PremiumStore</title>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin:0; padding:0; box-sizing:border-box; }
     body {
       font-family: 'Segoe UI', Arial, sans-serif;
       background: url('fondoweb.png') no-repeat center center fixed;
@@ -33,11 +29,7 @@
       top: 0;
       z-index: 100;
     }
-    h1 {
-      font-size: 2.8rem;
-      letter-spacing: 2px;
-      margin: 0;
-    }
+    h1 { font-size: 2.8rem; letter-spacing: 2px; margin: 0; }
     video {
       width: 100%;
       max-width: 900px;
@@ -53,9 +45,7 @@
       line-height: 1.6;
       text-align: center;
     }
-    section {
-      margin: 60px 0;
-    }
+    section { margin: 60px 0; }
     h2 {
       font-size: 1.9rem;
       text-align: center;
@@ -75,10 +65,13 @@
     }
     .gallery {
       display: grid;
-      grid-template-columns: repeat(4, 1fr); /* TODOS en 4 columnas */
+      grid-template-columns: repeat(4, 1fr);
       gap: 10px;
       margin: 30px 0;
       padding: 0 5px;
+    }
+    .gallery.hidden {
+      display: none;
     }
     .product {
       cursor: pointer;
@@ -111,10 +104,7 @@
       cursor: pointer;
       animation: pulse 2.5s infinite;
     }
-    @keyframes pulse {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.75; }
-    }
+    @keyframes pulse { 0%,100% {opacity:1} 50% {opacity:0.75} }
     .modal {
       display: none;
       position: fixed;
@@ -175,21 +165,9 @@
       text-align: center;
       z-index: 10;
     }
-    .price {
-      font-size: 1.3rem;
-      line-height: 1.4;
-      margin: 10px 0 15px;
-    }
-    .struck {
-      text-decoration: line-through;
-      color: #aaa;
-      margin-right: 12px;
-      font-size: 1.15rem;
-    }
-    .offer {
-      font-weight: bold;
-      font-size: 1.4rem;
-    }
+    .price { font-size: 1.3rem; line-height: 1.4; margin: 10px 0 15px; }
+    .struck { text-decoration: line-through; color: #aaa; margin-right: 12px; font-size: 1.15rem; }
+    .offer { font-weight: bold; font-size: 1.4rem; }
     .wa-btn {
       display: block;
       width: 100%;
@@ -216,38 +194,23 @@
       text-align: center;
       margin-top: 100px;
     }
-    footer a {
-      color: #ccc;
-      text-decoration: none;
-    }
-    footer a:hover {
-      color: white;
-    }
+    footer a { color: #ccc; text-decoration: none; }
+    footer a:hover { color: white; }
 
-    /* Responsive - mantiene 4 columnas en móvil y ajusta espacios */
     @media (max-width: 768px) {
       h1 { font-size: 2.2rem; }
       h2 { font-size: 1.7rem; margin-bottom: 6px; }
       h3 { font-size: 1rem; margin-bottom: 25px; }
-      .gallery {
-        grid-template-columns: repeat(4, 1fr);
-        gap: 6px;
-        padding: 0 4px;
-      }
+      .gallery { gap: 6px; padding: 0 4px; }
       .ver-mas { width: 160px; font-size: 0.95rem; }
       .modal img { max-height: 50vh; }
       .prev, .next { font-size: 40px; width: 40px; height: 40px; }
-      .close { font-size: 32px; top: -25px; right: 10px; }
+      .close { font-size: 32px; top: 10px; right: 12px; }
       .price { font-size: 1.15rem; }
       .wa-btn { font-size: 1rem; padding: 10px; max-width: 300px; }
     }
-
     @media (max-width: 480px) {
-      .gallery {
-        grid-template-columns: repeat(4, 1fr);
-        gap: 4px;
-        padding: 0 3px;
-      }
+      .gallery { gap: 4px; padding: 0 3px; }
     }
   </style>
 </head>
@@ -279,6 +242,9 @@
       <div class="product"><img src="portadaremeraregularfitblackted.png" data-sec="regular" data-idx="1" loading="lazy"></div>
       <div class="product"><img src="portadaremeraregularfitwhitebear.png" data-sec="regular" data-idx="2" loading="lazy"></div>
       <div class="product"><img src="portadaremeraregularfitwhitegum.png" data-sec="regular" data-idx="3" loading="lazy"></div>
+    </div>
+    <button class="ver-mas">Ver más</button>
+    <div class="gallery hidden">
       <div class="product"><img src="remeraregularfitblackcruz.png" data-sec="regular" data-idx="4" loading="lazy"></div>
       <div class="product"><img src="remeraregularfitblackemojis.png" data-sec="regular" data-idx="5" loading="lazy"></div>
       <div class="product"><img src="remeraregularfitblackgrafiti.png" data-sec="regular" data-idx="6" loading="lazy"></div>
@@ -307,6 +273,9 @@
       <div class="product"><img src="portadaremeraclasicablackmusk.png" data-sec="clasicas" data-idx="1" loading="lazy"></div>
       <div class="product"><img src="portadaremeraclasicawhiteattitude.png" data-sec="clasicas" data-idx="2" loading="lazy"></div>
       <div class="product"><img src="portadaremeraclasicawhitebunny.png" data-sec="clasicas" data-idx="3" loading="lazy"></div>
+    </div>
+    <button class="ver-mas">Ver más</button>
+    <div class="gallery hidden">
       <div class="product"><img src="remeraclasicablackalegria.png" data-sec="clasicas" data-idx="4" loading="lazy"></div>
       <div class="product"><img src="remeraclasicablackcabra.png" data-sec="clasicas" data-idx="5" loading="lazy"></div>
       <div class="product"><img src="remeraclasicablackcruz.png" data-sec="clasicas" data-idx="6" loading="lazy"></div>
@@ -335,6 +304,9 @@
       <div class="product"><img src="portadaremeraunisexoversizeoriginal.png" data-sec="oversize" data-idx="1" loading="lazy"></div>
       <div class="product"><img src="portadaremeraunisexoversizeoriginalemojis.png" data-sec="oversize" data-idx="2" loading="lazy"></div>
       <div class="product"><img src="portadaremeraunisexoversizeskullpinkbadboy.png" data-sec="oversize" data-idx="3" loading="lazy"></div>
+    </div>
+    <button class="ver-mas">Ver más</button>
+    <div class="gallery hidden">
       <div class="product"><img src="remeraunisexoversizeblackbadboy.png" data-sec="oversize" data-idx="4" loading="lazy"></div>
       <div class="product"><img src="remeraunisexoversizeblackcruz.png" data-sec="oversize" data-idx="5" loading="lazy"></div>
       <div class="product"><img src="remeraunisexoversizeblackcruzlarga.png" data-sec="oversize" data-idx="6" loading="lazy"></div>
@@ -375,6 +347,9 @@
       <div class="product"><img src="portadaremeraoversizestonewashblackbearpink.png" data-sec="stone-wash" data-idx="1" loading="lazy"></div>
       <div class="product"><img src="portadaremeraoversizestonewashwhitechillbear.png" data-sec="stone-wash" data-idx="2" loading="lazy"></div>
       <div class="product"><img src="portadaremeraoversizestonewashwhitebearpink.png" data-sec="stone-wash" data-idx="3" loading="lazy"></div>
+    </div>
+    <button class="ver-mas">Ver más</button>
+    <div class="gallery hidden">
       <div class="product"><img src="remeraoversizestonewashblackbaka.png" data-sec="stone-wash" data-idx="4" loading="lazy"></div>
       <div class="product"><img src="remeraoversizestonewashblackcabra.png" data-sec="stone-wash" data-idx="5" loading="lazy"></div>
       <div class="product"><img src="remeraoversizestonewashblackgorilla.png" data-sec="stone-wash" data-idx="6" loading="lazy"></div>
@@ -407,6 +382,9 @@
       <div class="product"><img src="portadaremeracropgraybitch.png" data-sec="crop" data-idx="1" loading="lazy"></div>
       <div class="product"><img src="portadaremeracroplightmauveheart.png" data-sec="crop" data-idx="2" loading="lazy"></div>
       <div class="product"><img src="portadaremeracropmauveoriginal.png" data-sec="crop" data-idx="3" loading="lazy"></div>
+    </div>
+    <button class="ver-mas">Ver más</button>
+    <div class="gallery hidden">
       <div class="product"><img src="remeracropbrownbitch.png" data-sec="crop" data-idx="4" loading="lazy"></div>
       <div class="product"><img src="remeracropbrowncherrylips.png" data-sec="crop" data-idx="5" loading="lazy"></div>
       <div class="product"><img src="remeracropbrownlovecat.png" data-sec="crop" data-idx="6" loading="lazy"></div>
@@ -435,6 +413,9 @@
       <div class="product"><img src="portadamusculosademorleygrayheartpink.png" data-sec="morley" data-idx="1" loading="lazy"></div>
       <div class="product"><img src="portadamusculosademorleygrayoriginal.png" data-sec="morley" data-idx="2" loading="lazy"></div>
       <div class="product"><img src="portadamusculosademorleygraypink.png" data-sec="morley" data-idx="3" loading="lazy"></div>
+    </div>
+    <button class="ver-mas">Ver más</button>
+    <div class="gallery hidden">
       <div class="product"><img src="musculosademorleygraybearpink.png" data-sec="morley" data-idx="4" loading="lazy"></div>
       <div class="product"><img src="musculosademorleygraychill.png" data-sec="morley" data-idx="5" loading="lazy"></div>
       <div class="product"><img src="musculosademorleygrayglow.png" data-sec="morley" data-idx="6" loading="lazy"></div>
@@ -451,6 +432,9 @@
       <div class="product"><img src="portadabuzohoddiewhiteunisexnolimit.png" data-sec="hodie" data-idx="1" loading="lazy"></div>
       <div class="product"><img src="portadabuzohoddiestonewashunisexoriginal.png" data-sec="hodie" data-idx="2" loading="lazy"></div>
       <div class="product"><img src="portadabuzohoddiewhiteunisexpanterpink.png" data-sec="hodie" data-idx="3" loading="lazy"></div>
+    </div>
+    <button class="ver-mas">Ver más</button>
+    <div class="gallery hidden">
       <div class="product"><img src="buzohoddieblackunisexbadboy.png" data-sec="hodie" data-idx="4" loading="lazy"></div>
       <div class="product"><img src="buzohoddieblackunisexbearpink.png" data-sec="hodie" data-idx="5" loading="lazy"></div>
       <div class="product"><img src="buzohoddieblackunisexbearpinkmini.png" data-sec="hodie" data-idx="6" loading="lazy"></div>
@@ -479,6 +463,9 @@
       <div class="product"><img src="portadabuzocuelloredondowhiteoversizebearpink.png" data-sec="cuello-redondo" data-idx="1" loading="lazy"></div>
       <div class="product"><img src="portadabuzocuelloredondostonewashoversizemanoriginal.png" data-sec="cuello-redondo" data-idx="2" loading="lazy"></div>
       <div class="product"><img src="portadabuzocuelloredondowhiteoversizechill.png" data-sec="cuello-redondo" data-idx="3" loading="lazy"></div>
+    </div>
+    <button class="ver-mas">Ver más</button>
+    <div class="gallery hidden">
       <div class="product"><img src="buzocuelloredondoblackoversizebaka.png" data-sec="cuello-redondo" data-idx="4" loading="lazy"></div>
       <div class="product"><img src="buzocuelloredondoblackoversizebearganster.png" data-sec="cuello-redondo" data-idx="5" loading="lazy"></div>
       <div class="product"><img src="buzocuelloredondoblackoversizegum.png" data-sec="cuello-redondo" data-idx="6" loading="lazy"></div>
@@ -503,6 +490,9 @@
       <div class="product"><img src="remeracelesteunisexstich.png" data-sec="infantiles" data-idx="1" loading="lazy"></div>
       <div class="product"><img src="remerarosaunisexpink.png" data-sec="infantiles" data-idx="2" loading="lazy"></div>
       <div class="product"><img src="remeragrisunisexoriginal.png" data-sec="infantiles" data-idx="3" loading="lazy"></div>
+    </div>
+    <button class="ver-mas">Ver más</button>
+    <div class="gallery hidden">
       <div class="product"><img src="remeraamarillaunisexattitude.png" data-sec="infantiles" data-idx="4" loading="lazy"></div>
       <div class="product"><img src="remeraamarillaunisexcoraje.png" data-sec="infantiles" data-idx="5" loading="lazy"></div>
       <div class="product"><img src="remeraamarillaunisexoriginal.png" data-sec="infantiles" data-idx="6" loading="lazy"></div>
@@ -670,7 +660,7 @@ const products = {
     {img:"remeracropmauvelipsart.png",name:"Crop Mauve Lips Art",talles:"S - M - L - XL - XXL",link:"https://wa.me/p/33366418513006286/5491176277337",struck:25490,offer:24270},
     {img:"remeracropmauvewatermelonlips.png",name:"Crop Mauve Water Melon Lips",talles:"S - M - L - XL - XXL",link:"https://wa.me/p/34864023363196838/5491176277337",struck:25490,offer:24270}
   ],
-  morley: [
+    morley: [
     {img:"portadamusculosademorleygraybitch.png",name:"Morley Gray Bitch",talles:"S - M - L - XL - XXL",link:"https://wa.me/p/26142934048646687/5491176277337",struck:24190,offer:23270},
     {img:"portadamusculosademorleygrayheartpink.png",name:"Morley Gray Heart Pink",talles:"S - M - L - XL - XXL",link:"https://wa.me/p/26283899871196248/5491176277337",struck:24190,offer:23270},
     {img:"portadamusculosademorleygrayoriginal.png",name:"Morley Gray Original",talles:"S - M - L - XL - XXL",link:"https://wa.me/p/25877706528525747/5491176277337",struck:24190,offer:23270},
@@ -740,18 +730,22 @@ const products = {
   ]
 };
 
+// EVENTOS Y FUNCIONES DEL CARRUSEL Y MODAL
 document.addEventListener('click', function(e) {
   if (e.target.classList.contains('ver-mas')) {
     e.target.style.display = 'none';
+    e.target.nextElementSibling.classList.remove('hidden');
     e.target.nextElementSibling.style.display = 'grid';
     return;
   }
+
   if (e.target.tagName === 'IMG' && e.target.dataset.sec) {
     currentSection = e.target.dataset.sec;
     currentIndex = parseInt(e.target.dataset.idx) || 0;
     openModal();
     return;
   }
+
   if (e.target.classList.contains('prev')) {
     change(-1);
     return;
@@ -760,6 +754,7 @@ document.addEventListener('click', function(e) {
     change(1);
     return;
   }
+
   if (e.target.id === 'modal' || e.target.classList.contains('close')) {
     document.getElementById('modal').style.display = 'none';
   }
@@ -768,24 +763,31 @@ document.addEventListener('click', function(e) {
 function openModal() {
   const prod = products[currentSection]?.[currentIndex];
   if (!prod) return;
+
   document.getElementById('modalImg').src = prod.img;
   document.getElementById('modalImg').style.transform = 'scale(1)';
+
   document.getElementById('price').innerHTML = `
     <span class="struck">$${prod.struck.toLocaleString('es-AR')}</span>
     <span class="offer">$${prod.offer.toLocaleString('es-AR')}</span><br>
     ${prod.name}<br>
     ${prod.talles}
   `;
+
   document.getElementById('wa').href = prod.link;
+
   document.getElementById('modal').style.display = 'flex';
 }
 
 function change(dir) {
   const arr = products[currentSection];
   if (!arr || arr.length === 0) return;
+
   currentIndex = (currentIndex + dir + arr.length) % arr.length;
   openModal();
 }
+
+console.log("Sitio cargado correctamente – 4 columnas + Ver más funcionando");
 </script>
 </body>
 </html>
